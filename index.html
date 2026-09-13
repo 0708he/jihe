@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="glass">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>缘</title>
 <style>
-/* ================= 基础主题变量 ================= */
-:root{
+/* ================= 浅色主题（默认） ================= */
+:root[data-theme="glass"] {
   --bg:#e8ecf4;
   --card:rgba(255,255,255,.55);
   --card2:rgba(255,255,255,.8);
@@ -20,9 +20,89 @@
   --line:rgba(255,255,255,.85);
   --star:#f5a524;
   --danger:#ef4444;
-  --radius:18px;
-  --blur:blur(20px) saturate(1.7);
+  --input-bg:rgba(255,255,255,.75);
+  --input-text:#0f172a;
+  --placeholder:#94a3b8;
 }
+:root[data-theme="light"] {
+  --bg:#f4f6fa;
+  --card:rgba(255,255,255,.85);
+  --card2:#eef2f7;
+  --text:#0f172a;
+  --muted:#64748b;
+  --accent:#0ea5e9;
+  --accent2:#8b5CF6;
+  --line:rgba(15,23,42,.1);
+  --star:#f59e0b;
+  --danger:#ef4444;
+  --input-bg:#ffffff;
+  --input-text:#0f172a;
+  --placeholder:#94a3b8;
+}
+
+/* ================= 深色主题 ================= */
+:root[data-theme="dark"] {
+  --bg:#0b0f14;
+  --card:rgba(22,28,36,.7);
+  --card2:#1e2630;
+  --text:#e8eef5;
+  --muted:#8b9aab;
+  --accent:#38bdf8;
+  --accent2:#a855f7;
+  --line:rgba(255,255,255,.08);
+  --star:#fbbf24;
+  --danger:#f87171;
+  --input-bg:#0e141b;
+  --input-text:#e8eef5;
+  --placeholder:#5a6a7a;
+}
+:root[data-theme="ocean"] {
+  --bg:#05101c;
+  --card:rgba(13,27,42,.7);
+  --card2:#152a40;
+  --text:#e0f2ff;
+  --muted:#7fa3c0;
+  --accent:#22d3ee;
+  --accent2:#3b82f6;
+  --line:rgba(255,255,255,.1);
+  --star:#fbbf24;
+  --danger:#f87171;
+  --input-bg:#0a1a2a;
+  --input-text:#e0f2ff;
+  --placeholder:#5a7a9a;
+}
+:root[data-theme="sakura"] {
+  --bg:#160a12;
+  --card:rgba(35,19,33,.7);
+  --card2:#301a2c;
+  --text:#ffe8f3;
+  --muted:#c390ac;
+  --accent:#f472b6;
+  --accent2:#a855f7;
+  --line:rgba(255,255,255,.1);
+  --star:#fbbf24;
+  --danger:#f87171;
+  --input-bg:#1f101a;
+  --input-text:#ffe8f3;
+  --placeholder:#8a5a7a;
+}
+:root[data-theme="forest"] {
+  --bg:#0a1310;
+  --card:rgba(17,29,24,.7);
+  --card2:#182a22;
+  --text:#e2f5ec;
+  --muted:#84a99a;
+  --accent:#34d399;
+  --accent2:#22d3ee;
+  --line:rgba(255,255,255,.1);
+  --star:#fbbf24;
+  --danger:#f87171;
+  --input-bg:#0f1f1a;
+  --input-text:#e2f5ec;
+  --placeholder:#5a8a7a;
+}
+
+/* ================= 基础 ================= */
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
@@ -31,15 +111,22 @@ body{
   padding-bottom:calc(40px + env(safe-area-inset-bottom));
   background:var(--bg);
   background-attachment:fixed;
-  transition:background .3s,color .3s;
+  transition: background .3s, color .3s;
 }
+/* 修复 iOS 系统深色模式干扰 */
+input, textarea, select {
+  -webkit-text-fill-color: var(--input-text);
+  color: var(--input-text);
+  background: var(--input-bg);
+}
+input::placeholder, textarea::placeholder { color: var(--placeholder); }
 
 /* ================= 顶栏 ================= */
 header{
   position:sticky; top:0; z-index:20;
   background:var(--card);
-  backdrop-filter:var(--blur);
-  -webkit-backdrop-filter:var(--blur);
+  backdrop-filter:blur(20px) saturate(1.7);
+  -webkit-backdrop-filter:blur(20px) saturate(1.7);
   border-bottom:1px solid var(--line);
   padding:calc(14px + env(safe-area-inset-top)) 16px 0;
 }
@@ -65,14 +152,12 @@ h1{
   box-shadow:0 6px 20px rgba(100,140,255,.35);
 }
 #search{
-  width:100%;margin-top:14px;background:var(--card);
-  border:1px solid var(--line); color:var(--text);
+  width:100%;margin-top:14px;
+  background:var(--input-bg);border:1px solid var(--line); color:var(--input-text);
   border-radius:14px;padding:12px 16px;font-size:15px;outline:none;font-family:inherit;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  box-shadow:0 2px 10px rgba(0,0,0,.04);
-  transition:.18s;
+  box-shadow:0 2px 10px rgba(0,0,0,.04); transition:.18s;
 }
-#search::placeholder{color:var(--muted)}
+#search::placeholder{color:var(--placeholder)}
 #search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,140,255,.18)}
 
 /* ================= 分类/标签 ================= */
@@ -103,7 +188,6 @@ h1{
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
   gap:14px;
 }
-/* 图标模式（正方形） */
 #list.icon-mode{
   grid-template-columns:repeat(auto-fill,minmax(84px,1fr));
   gap:18px 12px;
@@ -113,20 +197,18 @@ h1{
   #list.icon-mode{grid-template-columns:repeat(4,1fr);gap:14px 10px;padding:16px 12px}
 }
 
-/* 卡片基础 */
 .item{
-  background:var(--card);border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line); border-radius:18px;
   padding:14px;cursor:pointer;position:relative;
   display:flex;flex-direction:column;gap:9px;min-height:118px;
-  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  backdrop-filter:blur(20px) saturate(1.7);
+  -webkit-backdrop-filter:blur(20px) saturate(1.7);
   box-shadow:0 8px 28px rgba(0,0,0,.08), inset 0 1px 0 var(--line);
   transition:transform .15s, border-color .15s, box-shadow .15s;
   text-decoration: none; color: inherit;
 }
 .item:hover{background:var(--card2);border-color:var(--accent);box-shadow:0 14px 36px rgba(0,0,0,.15), inset 0 1px 0 var(--line);}
 .item:active{transform:scale(.97)}
-
-/* 卡片模式内部样式 */
 .item .row1{display:flex;align-items:center;gap:10px;width:100%}
 .item .ic{
   width:40px;height:40px;border-radius:12px;
@@ -151,46 +233,37 @@ h1{
 }
 .item .more-btn:active{background:rgba(0,0,0,.1);color:var(--text)}
 
-/* 图标模式专属样式 */
 #list.icon-mode .item{
   min-height: 88px; padding: 10px 4px; gap: 8px;
   justify-content: center; align-items: center; text-align: center;
 }
-#list.icon-mode .item .row1{
-  flex-direction: column; gap: 6px;
-}
-#list.icon-mode .item .ic{
-  width: 48px; height: 48px; border-radius: 14px; font-size: 22px;
-}
-#list.icon-mode .item .nm{
-  font-size: 11px; -webkit-line-clamp: 1; text-align: center; max-width: 100%;
-}
+#list.icon-mode .item .row1{ flex-direction: column; gap: 6px; }
+#list.icon-mode .item .ic{ width: 48px; height: 48px; border-radius: 14px; font-size: 22px; }
+#list.icon-mode .item .nm{ font-size: 11px; -webkit-line-clamp: 1; text-align: center; max-width: 100%; }
 #list.icon-mode .item .url,
 #list.icon-mode .item .note,
 #list.icon-mode .item .meta,
-#list.icon-mode .item .st{
-  display: none !important;
-}
-#list.icon-mode .item .more-btn{
-  top: 4px; right: 4px; background: var(--card); border-radius: 50%; width: 20px; height: 20px; font-size: 14px;
-}
+#list.icon-mode .item .st{ display: none !important; }
+#list.icon-mode .item .more-btn{ top: 4px; right: 4px; background: var(--card); border-radius: 50%; width: 20px; height: 20px; font-size: 14px; }
 
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:80px 20px;line-height:1.9;}
 
-/* ================= 全屏表单（解决拥挤） ================= */
+/* ================= 全屏表单（跟随主题自动变色） ================= */
 #formPage{
   position:fixed;inset:0;z-index:200;
   background:var(--bg);
   display:none;flex-direction:column;
   padding:calc(16px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
   overflow-y:auto;
+  color:var(--text);
+  transition: background .3s, color .3s;
 }
 #formPage.show{display:flex}
 .form-header{
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:20px;
 }
-.form-header h2{font-size:20px;margin:0;font-weight:700;}
+.form-header h2{font-size:20px;margin:0;font-weight:700;color:var(--text);}
 .form-body{
   flex:1;
   display:flex;flex-direction:column;gap:14px;
@@ -199,17 +272,27 @@ h1{
   display:flex;flex-direction:column;gap:6px;
   background:var(--card);border:1px solid var(--line);
   border-radius:14px;padding:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.02);
 }
 .form-row label{font-size:13px;color:var(--muted);font-weight:500;}
 .form-row input, .form-row textarea{
-  width:100%;background:transparent;border:0;outline:none;
-  color:var(--text);font-size:15px;font-family:inherit;
+  width:100%;border:0;outline:none;
+  font-size:15px;font-family:inherit;
   padding:4px 0;
+  background:transparent;
+  color:var(--input-text);
+  -webkit-text-fill-color: var(--input-text);
 }
 .form-row textarea{min-height:70px;resize:vertical;}
-.form-row input::placeholder, .form-row textarea::placeholder{color:var(--muted);opacity:.5;}
 .form-footer{
   display:flex;gap:12px;margin-top:20px;
+}
+.form-footer .btn.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+}
+.form-footer .btn:not(.primary){
+  background:var(--card2);color:var(--text);
 }
 
 /* ================= 弹层（详情/主题/备份） ================= */
@@ -224,7 +307,7 @@ h1{
   border:1px solid var(--line);border-bottom:0;
   border-radius:24px 24px 0 0;
   padding:22px 20px calc(22px + env(safe-area-inset-bottom));
-  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   color:var(--text); box-shadow:0 -10px 40px rgba(0,0,0,.15);
   animation:up .24s cubic-bezier(.2,.9,.3,1);
 }
@@ -240,16 +323,16 @@ h1{
 .dhead .ic{width:60px;height:60px;border-radius:18px;background:var(--card2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:26px;font-weight:700;flex:0 0 auto;color:var(--accent);}
 .dhead .ic img{width:100%;height:100%;object-fit:cover}
 .dhead .nm{font-size:18px;font-weight:700;line-height:1.3;color:var(--text)}
-.dhead .u{font-size:11px;color:var(--muted);word-break:break-all;margin-top:4px}
+.dhead .u{font-size:11px;color:var(--muted);word-break:break-all;margin-top:4px;}
 
-.field{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:9px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.field{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:9px;}
 .field .k{font-size:11px;color:var(--muted);margin-bottom:5px;}
 .field .v{font-size:14px;word-break:break-all;line-height:1.55;white-space:pre-wrap;color:var(--text);}
 .field .v.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;}
 
 .actions{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap}
 .actions.col{flex-direction:column}
-.btn{flex:1;min-width:80px;border:1px solid var(--line);border-radius:13px;padding:13px 14px;font-size:15px;cursor:pointer;background:var(--card);color:var(--text);font-family:inherit;font-weight:500;transition:.15s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 3px 10px rgba(0,0,0,.04);}
+.btn{flex:1;min-width:80px;border:1px solid var(--line);border-radius:13px;padding:13px 14px;font-size:15px;cursor:pointer;background:var(--card);color:var(--text);font-family:inherit;font-weight:500;transition:.15s;box-shadow:0 3px 10px rgba(0,0,0,.04);}
 .btn:active{transform:scale(.97)}
 .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:700;border-color:transparent;box-shadow:0 6px 20px rgba(100,140,255,.35);}
 .btn.danger{background:rgba(239,68,68,.12);color:var(--danger);border-color:rgba(239,68,68,.3);}
@@ -257,14 +340,12 @@ h1{
 
 .hint{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;}
 
-/* 主题选择器 */
 .themes{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
 .theme-item{width:52px;height:52px;border-radius:14px;border:2px solid var(--line);cursor:pointer;position:relative;overflow:hidden;transition:.15s;display:flex;align-items:center;justify-content:center;}
 .theme-item:active{transform:scale(.94)}
 .theme-item.on{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,140,255,.25);}
 .theme-item .dot{position:absolute;right:6px;bottom:6px;width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.4);}
 
-/* 自定义背景预览 */
 #bgPreview{
   width:100%;height:120px;border-radius:12px;
   border:1px dashed var(--line);
@@ -274,7 +355,6 @@ h1{
   margin-bottom:10px;overflow:hidden;position:relative;
 }
 #bgPreview img{width:100%;height:100%;object-fit:cover;}
-#bgPreview .tip{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.5);color:#fff;padding:2px 8px;border-radius:6px;font-size:10px;}
 
 #toast{
   position:fixed;left:50%;bottom:calc(40px + env(safe-area-inset-bottom));
@@ -289,7 +369,6 @@ h1{
 </head>
 <body>
 
-<!-- ==================== 主界面 ==================== -->
 <header>
   <div class="top">
     <h1>缘</h1>
@@ -308,7 +387,6 @@ h1{
 
 <div id="list"></div>
 
-<!-- ==================== 全屏表单（添加/编辑） ==================== -->
 <div id="formPage">
   <div class="form-header">
     <h2 id="formTitle">添加链接</h2>
@@ -351,14 +429,11 @@ h1{
   </div>
 </div>
 
-<!-- ==================== 详情弹层 ==================== -->
 <div class="sheet" id="detail"><div class="box" id="detailBox"></div></div>
 
-<!-- ==================== 主题/CSS弹层 ==================== -->
 <div class="sheet" id="themeSheet">
   <div class="box">
     <h2>主题与外观</h2>
-
     <label>自定义背景图片</label>
     <div id="bgPreview">点击上传背景</div>
     <input type="file" id="bgUpload" accept="image/*" hidden>
@@ -366,10 +441,8 @@ h1{
       <button class="btn" id="bgReset">恢复默认背景</button>
     </div>
     <p class="hint">支持从相册、拍照或文件中选择，会自动压缩防止内存溢出。</p>
-
     <label style="margin-top:20px;">内置主题</label>
     <div class="themes" id="themeList"></div>
-
     <label>自定义 CSS（实时生效）</label>
     <textarea class="code" id="customCss" placeholder="/* 例如：&#10;.item { border-radius: 30px; }&#10;*/"></textarea>
     <div class="actions">
@@ -381,7 +454,6 @@ h1{
   </div>
 </div>
 
-<!-- ==================== 备份弹层 ==================== -->
 <div class="sheet" id="backupSheet">
   <div class="box">
     <h2>备份与恢复</h2>
@@ -403,7 +475,6 @@ h1{
 <div id="toast"></div>
 
 <script>
-/* ================= 主题数据 ================= */
 const THEMES = {
   glass:  { label:'毛玻璃', v:{ bg:'#e8ecf4', card:'rgba(255,255,255,.55)', card2:'rgba(255,255,255,.8)', text:'#1a2233', muted:'#6b7891', accent:'#4f8cff', accent2:'#a78bfa', line:'rgba(255,255,255,.85)', star:'#f5a524', danger:'#ef4444' } },
   dark:   { label:'深空',   v:{ bg:'#0b0f14', card:'rgba(22,28,36,.7)', card2:'#1e2630', text:'#e8eef5', muted:'#8b9aab', accent:'#38bdf8', accent2:'#a855f7', line:'rgba(255,255,255,.08)', star:'#fbbf24', danger:'#f87171' } },
@@ -461,11 +532,10 @@ function closeAll(){ $$('.sheet').forEach(s => s.classList.remove('show')); }
 function closeForm(){ $('#formPage').classList.remove('show'); }
 function parseTags(s){ return String(s || '').split(/[,，\s]+/).map(x => x.trim()).filter(Boolean); }
 
-/* ================= 主题引擎 ================= */
 function applyTheme(themeKey){
   const t = THEMES[themeKey] || THEMES.glass;
-  const r = document.documentElement;
-  Object.entries(t.v).forEach(([k, v]) => r.style.setProperty('--' + k, v));
+  // 设置 data-theme 属性，让 CSS 接管颜色
+  document.documentElement.setAttribute('data-theme', themeKey);
   const meta = document.querySelector('meta[name="theme-color"]');
   if(meta) meta.setAttribute('content', t.v.bg);
   try{ localStorage.setItem(THEME_KEY, themeKey); }catch(e){}
@@ -485,7 +555,6 @@ function renderThemeList(){
     </div>`).join('');
 }
 
-/* ================= 自定义背景 ================= */
 function applyCustomBg(dataUrl){
   if(dataUrl){
     document.body.style.backgroundImage = `url(${dataUrl})`;
@@ -525,7 +594,6 @@ function compressImage(file, callback){
   reader.readAsDataURL(file);
 }
 
-/* ================= 数据 ================= */
 function load(){ try{ const a = JSON.parse(localStorage.getItem(KEY) || '[]'); items = Array.isArray(a) ? a : []; }catch(e){ items = []; } }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(items)); }catch(e){ toast('保存失败'); } }
 function allCats(){ const m = new Map(); items.forEach(it => { const c = (it.cat || '').trim(); if(!c) return; m.set(c, (m.get(c) || 0) + 1); }); return [...m.entries()].sort((a, b) => b[1] - a[1]); }
@@ -551,7 +619,6 @@ function visible(){
   return list;
 }
 
-/* ================= 渲染 ================= */
 function iconHTML(it){
   const ic = (it.icon || '').trim();
   if(/^(https?:\/\/|data:image)/i.test(ic)) return `<img src="${esc(ic)}" alt="" onerror="this.remove()">`;
@@ -625,7 +692,6 @@ function fieldHTML(k, v, mono){
   return `<div class="field"><div class="k">${esc(k)}</div><div class="v ${mono ? 'mono' : ''}">${esc(v)}</div></div>`;
 }
 
-/* ================= 详情 ================= */
 function openDetail(id){
   const it = items.find(x => x.id === id);
   if(!it) return;
@@ -653,7 +719,6 @@ function openDetail(id){
   $('#detail').classList.add('show');
 }
 
-/* ================= 表单（全屏） ================= */
 function setStar(v){ formStar = v; const el = $('#starToggle'); el.classList.toggle('on', v); el.querySelector('.s').textContent = v ? '★' : '☆'; el.querySelector('.s').style.color = v ? 'var(--star)' : 'var(--muted)'; }
 function openForm(id){
   editingId = id || null;
@@ -665,18 +730,12 @@ function openForm(id){
   setTimeout(() => $('#fName').focus(), 80);
 }
 
-/* ================= 事件绑定 ================= */
 $('#cats').addEventListener('click', e => { const c = e.target.closest('[data-cat]'); if(!c) return; curCat = c.dataset.cat; renderAll(); });
 $('#tagBar').addEventListener('click', e => { const t = e.target.closest('[data-tag]'); if(!t) return; curTag = (curTag === t.dataset.tag) ? null : t.dataset.tag; renderAll(); });
 
-// 核心交互：点击主体直接跳转，点击更多按钮打开详情
 $('#list').addEventListener('click', e => {
   const moreBtn = e.target.closest('[data-more]');
-  if(moreBtn){
-    e.stopPropagation();
-    openDetail(moreBtn.dataset.more);
-    return;
-  }
+  if(moreBtn){ e.stopPropagation(); openDetail(moreBtn.dataset.more); return; }
   const item = e.target.closest('.item');
   if(item){
     const it = items.find(x => x.id === item.dataset.id);
@@ -693,7 +752,6 @@ $('#sortBtn').addEventListener('click', () => { sortMode = sortMode === 'new' ? 
 $('#themeBtn').addEventListener('click', () => $('#themeSheet').classList.add('show'));
 $('#backupBtn').addEventListener('click', () => $('#backupSheet').classList.add('show'));
 
-// 视图切换
 $('#viewToggleBtn').addEventListener('click', () => {
   viewMode = viewMode === 'card' ? 'icon' : 'card';
   localStorage.setItem(VIEW_KEY, viewMode);
@@ -701,7 +759,6 @@ $('#viewToggleBtn').addEventListener('click', () => {
   toast('已切换：' + (viewMode === 'card' ? '卡片模式' : '图标模式'));
 });
 
-// 表单事件
 $('#starToggle').addEventListener('click', () => setStar(!formStar));
 $('#saveBtn').addEventListener('click', () => {
   const name = $('#fName').value.trim(); const url = $('#fUrl').value.trim();
@@ -712,7 +769,6 @@ $('#saveBtn').addEventListener('click', () => {
   save(); renderAll(); closeForm(); toast(editingId ? '已保存' : '已添加');
 });
 
-// 关闭页面/弹层
 document.addEventListener('click', e => {
   if(e.target.closest('[data-close-page]')){ closeForm(); return; }
   if(e.target.closest('[data-close]')){ closeAll(); return; }
@@ -729,38 +785,21 @@ document.addEventListener('click', e => {
 $$('.sheet').forEach(s => { s.addEventListener('click', e => { if(e.target === s) s.classList.remove('show'); }); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeAll(); closeForm(); } });
 
-/* ================= 自定义背景事件 ================= */
 $('#bgPreview').addEventListener('click', () => $('#bgUpload').click());
 $('#bgUpload').addEventListener('change', e => {
   const f = e.target.files[0]; if(!f) return;
-  compressImage(f, dataUrl => {
-    applyCustomBg(dataUrl);
-    toast('背景已更新');
-  });
+  compressImage(f, dataUrl => { applyCustomBg(dataUrl); toast('背景已更新'); });
   e.target.value = '';
 });
-$('#bgReset').addEventListener('click', () => {
-  applyCustomBg('');
-  toast('已恢复默认背景');
-});
+$('#bgReset').addEventListener('click', () => { applyCustomBg(''); toast('已恢复默认背景'); });
 
-/* ================= 主题/自定义CSS 事件 ================= */
 $('#themeList').addEventListener('click', e => { const t = e.target.closest('.theme-item'); if(!t) return; applyTheme(t.dataset.k); toast('已切换：' + THEMES[t.dataset.k]?.label); });
 $('#customCss').addEventListener('input', e => { applyCustomCss(e.target.value); });
 $('#cssReset').addEventListener('click', () => { $('#customCss').value = ''; applyCustomCss(''); toast('已清空 CSS'); });
 $('#cssCopy').addEventListener('click', () => { copyText($('#customCss').value || ''); });
 
-/* ================= 备份/恢复 事件 ================= */
 $('#exportBtn').addEventListener('click', () => {
-  const backup = {
-    version: 1,
-    exportedAt: new Date().toISOString(),
-    theme: localStorage.getItem(THEME_KEY) || 'glass',
-    viewMode,
-    customCss: localStorage.getItem(CSS_KEY) || '',
-    customBg: localStorage.getItem(BG_KEY) || '',
-    items
-  };
+  const backup = { version: 1, exportedAt: new Date().toISOString(), theme: localStorage.getItem(THEME_KEY) || 'glass', viewMode, customCss: localStorage.getItem(CSS_KEY) || '', customBg: localStorage.getItem(BG_KEY) || '', items };
   const blob = new Blob([JSON.stringify(backup, null, 2)], { type:'application/json' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '缘备份-' + new Date().toISOString().slice(0,10) + '.json';
   a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1500); toast('已导出（含背景+主题+CSS）');
@@ -794,7 +833,6 @@ $('#copyAllBtn').addEventListener('click', () => {
 });
 $('#clearBtn').addEventListener('click', () => { if(confirm('确定清空全部数据？建议先导出备份。')){ items = []; save(); renderAll(); closeAll(); toast('已清空'); } });
 
-/* ================= 启动 ================= */
 renderThemeList();
 applyTheme(localStorage.getItem(THEME_KEY) || 'glass');
 const savedCss = localStorage.getItem(CSS_KEY) || '';
