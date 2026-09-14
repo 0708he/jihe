@@ -8,107 +8,49 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>缘</title>
 <style>
-/* ================= 浅色主题（默认） ================= */
 :root[data-theme="glass"] {
-  --bg:#e8ecf4;
-  --card:rgba(255,255,255,.55);
-  --card2:rgba(255,255,255,.8);
-  --text:#1a2233;
-  --muted:#6b7891;
-  --accent:#4f8cff;
-  --accent2:#a78bfa;
-  --line:rgba(255,255,255,.85);
-  --star:#f5a524;
-  --danger:#ef4444;
-  --input-bg:rgba(255,255,255,.75);
-  --input-text:#0f172a;
-  --placeholder:#94a3b8;
+  --bg:#e8ecf4; --card:rgba(255,255,255,.55); --card2:rgba(255,255,255,.8);
+  --text:#1a2233; --muted:#6b7891; --accent:#4f8cff; --accent2:#a78bfa;
+  --line:rgba(255,255,255,.85); --star:#f5a524; --danger:#ef4444;
+  --input-bg:rgba(255,255,255,.75); --input-text:#0f172a; --placeholder:#94a3b8;
 }
 :root[data-theme="light"] {
-  --bg:#f4f6fa;
-  --card:rgba(255,255,255,.85);
-  --card2:#eef2f7;
-  --text:#0f172a;
-  --muted:#64748b;
-  --accent:#0ea5e9;
-  --accent2:#8b5CF6;
-  --line:rgba(15,23,42,.1);
-  --star:#f59e0b;
-  --danger:#ef4444;
-  --input-bg:#ffffff;
-  --input-text:#0f172a;
-  --placeholder:#94a3b8;
+  --bg:#f4f6fa; --card:rgba(255,255,255,.85); --card2:#eef2f7;
+  --text:#0f172a; --muted:#64748b; --accent:#0ea5e9; --accent2:#8b5CF6;
+  --line:rgba(15,23,42,.1); --star:#f59e0b; --danger:#ef4444;
+  --input-bg:#ffffff; --input-text:#0f172a; --placeholder:#94a3b8;
 }
 :root[data-theme="dark"] {
-  --bg:#0b0f14;
-  --card:rgba(22,28,36,.7);
-  --card2:#1e2630;
-  --text:#e8eef5;
-  --muted:#8b9aab;
-  --accent:#38bdf8;
-  --accent2:#a855f7;
-  --line:rgba(255,255,255,.08);
-  --star:#fbbf24;
-  --danger:#f87171;
-  --input-bg:#0e141b;
-  --input-text:#e8eef5;
-  --placeholder:#5a6a7a;
+  --bg:#0b0f14; --card:rgba(22,28,36,.7); --card2:#1e2630;
+  --text:#e8eef5; --muted:#8b9aab; --accent:#38bdf8; --accent2:#a855f7;
+  --line:rgba(255,255,255,.08); --star:#fbbf24; --danger:#f87171;
+  --input-bg:#0e141b; --input-text:#e8eef5; --placeholder:#5a6a7a;
 }
 :root[data-theme="ocean"] {
-  --bg:#05101c;
-  --card:rgba(13,27,42,.7);
-  --card2:#152a40;
-  --text:#e0f2ff;
-  --muted:#7fa3c0;
-  --accent:#22d3ee;
-  --accent2:#3b82f6;
-  --line:rgba(255,255,255,.1);
-  --star:#fbbf24;
-  --danger:#f87171;
-  --input-bg:#0a1a2a;
-  --input-text:#e0f2ff;
-  --placeholder:#5a7a9a;
+  --bg:#05101c; --card:rgba(13,27,42,.7); --card2:#152a40;
+  --text:#e0f2ff; --muted:#7fa3c0; --accent:#22d3ee; --accent2:#3b82f6;
+  --line:rgba(255,255,255,.1); --star:#fbbf24; --danger:#f87171;
+  --input-bg:#0a1a2a; --input-text:#e0f2ff; --placeholder:#5a7a9a;
 }
 :root[data-theme="sakura"] {
-  --bg:#160a12;
-  --card:rgba(35,19,33,.7);
-  --card2:#301a2c;
-  --text:#ffe8f3;
-  --muted:#c390ac;
-  --accent:#f472b6;
-  --accent2:#a855f7;
-  --line:rgba(255,255,255,.1);
-  --star:#fbbf24;
-  --danger:#f87171;
-  --input-bg:#1f101a;
-  --input-text:#ffe8f3;
-  --placeholder:#8a5a7a;
+  --bg:#160a12; --card:rgba(35,19,33,.7); --card2:#301a2c;
+  --text:#ffe8f3; --muted:#c390ac; --accent:#f472b6; --accent2:#a855f7;
+  --line:rgba(255,255,255,.1); --star:#fbbf24; --danger:#f87171;
+  --input-bg:#1f101a; --input-text:#ffe8f3; --placeholder:#8a5a7a;
 }
 :root[data-theme="forest"] {
-  --bg:#0a1310;
-  --card:rgba(17,29,24,.7);
-  --card2:#182a22;
-  --text:#e2f5ec;
-  --muted:#84a99a;
-  --accent:#34d399;
-  --accent2:#22d3ee;
-  --line:rgba(255,255,255,.1);
-  --star:#fbbf24;
-  --danger:#f87171;
-  --input-bg:#0f1f1a;
-  --input-text:#e2f5ec;
-  --placeholder:#5a8a7a;
+  --bg:#0a1310; --card:rgba(17,29,24,.7); --card2:#182a22;
+  --text:#e2f5ec; --muted:#84a99a; --accent:#34d399; --accent2:#22d3ee;
+  --line:rgba(255,255,255,.1); --star:#fbbf24; --danger:#f87171;
+  --input-bg:#0f1f1a; --input-text:#e2f5ec; --placeholder:#5a8a7a;
 }
-
-/* ================= 基础 ================= */
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
   color:var(--text); min-height:100vh;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
   padding-bottom:calc(40px + env(safe-area-inset-bottom));
-  background:var(--bg);
-  background-attachment:fixed;
+  background:var(--bg); background-attachment:fixed;
   transition: background .3s, color .3s;
 }
 input, textarea, select {
@@ -118,7 +60,6 @@ input, textarea, select {
 }
 input::placeholder, textarea::placeholder { color: var(--placeholder); }
 
-/* ================= 顶栏 ================= */
 header{
   position:sticky; top:0; z-index:20;
   background:var(--card);
@@ -139,8 +80,7 @@ h1{
   color:var(--text); width:38px;height:38px;border-radius:12px;cursor:pointer;
   font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  box-shadow:0 2px 10px rgba(0,0,0,.06);
-  transition:.15s;
+  box-shadow:0 2px 10px rgba(0,0,0,.06); transition:.15s;
 }
 .tbtn:active{transform:scale(.93)}
 .tbtn.primary{
@@ -157,14 +97,11 @@ h1{
 #search::placeholder{color:var(--placeholder)}
 #search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,140,255,.18)}
 
-/* ================= 模式切换 & 分类/标签 ================= */
-.mode-switch{
-  display:flex; gap:8px; margin-top:12px;
-}
+.mode-switch{display:flex; gap:8px; margin-top:12px;}
 .mode-btn{
-  flex:1; padding:10px; border-radius:12px; border:1px solid var(--line);
-  background:var(--card); color:var(--muted); font-size:14px; font-weight:600;
-  cursor:pointer; transition:.15s; font-family:inherit;
+  flex:1; padding:10px 4px; border-radius:12px; border:1px solid var(--line);
+  background:var(--card); color:var(--muted); font-size:12.5px; font-weight:600;
+  cursor:pointer; transition:.15s; font-family:inherit; white-space:nowrap;
 }
 .mode-btn.on{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
@@ -191,7 +128,6 @@ h1{
 .tags{padding-bottom:12px}
 .tags:empty{display:none}
 
-/* ================= 列表区域 ================= */
 #list{
   padding:16px;
   display:grid;
@@ -202,15 +138,14 @@ h1{
   grid-template-columns:repeat(auto-fill,minmax(84px,1fr));
   gap:18px 12px;
 }
-/* API 模式下卡片变为单列宽卡片 */
-#list.api-mode{
+#list.api-mode, #list.file-mode{
   grid-template-columns: 1fr;
   gap: 12px;
 }
 @media(max-width:420px){
   #list{grid-template-columns:1fr 1fr;gap:11px;padding:12px}
   #list.icon-mode{grid-template-columns:repeat(4,1fr);gap:14px 10px;padding:16px 12px}
-  #list.api-mode{grid-template-columns:1fr;gap:12px;padding:12px}
+  #list.api-mode, #list.file-mode{grid-template-columns:1fr;gap:12px;padding:12px}
 }
 
 .item{
@@ -249,12 +184,11 @@ h1{
 }
 .item .more-btn:active{background:rgba(0,0,0,.1);color:var(--text)}
 
-/* API 卡片专属样式 */
-.api-item {
+.api-item, .file-item {
   display: flex; flex-direction: column; gap: 8px;
   min-height: auto; padding: 16px;
 }
-.api-item .api-name { font-size: 15px; font-weight: 700; color: var(--text); }
+.api-item .api-name, .file-item .file-name { font-size: 15px; font-weight: 700; color: var(--text); word-break: break-all; }
 .api-item .api-row {
   display: flex; align-items: center; gap: 8px;
   background: var(--input-bg); border: 1px solid var(--line);
@@ -266,14 +200,18 @@ h1{
   word-break: break-all; color: var(--text);
 }
 .api-item .api-text.masked { color: var(--muted); letter-spacing: 2px; }
-.api-item .copy-btn {
+.api-item .copy-btn, .file-item .act-btn {
   flex: 0 0 auto; border: 0; background: var(--card2); color: var(--accent);
   border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 600;
   cursor: pointer; font-family: inherit;
 }
-.api-item .copy-btn:active { background: var(--accent); color: #fff; }
+.api-item .copy-btn:active, .file-item .act-btn:active { background: var(--accent); color: #fff; }
+.file-item .file-meta {
+  display: flex; gap: 10px; font-size: 11px; color: var(--muted); flex-wrap: wrap;
+}
+.file-item .file-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.file-item .file-actions { display: flex; gap: 8px; margin-top: 4px; }
 
-/* 图标模式专属样式 */
 #list.icon-mode .item{
   min-height: 88px; padding: 10px 4px; gap: 8px;
   justify-content: center; align-items: center; text-align: center;
@@ -289,26 +227,18 @@ h1{
 
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:80px 20px;line-height:1.9;}
 
-/* ================= 全屏表单 ================= */
 #formPage{
   position:fixed;inset:0;z-index:200;
   background:var(--bg);
   display:none;flex-direction:column;
   padding:calc(16px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
-  overflow-y:auto;
-  color:var(--text);
+  overflow-y:auto; color:var(--text);
   transition: background .3s, color .3s;
 }
 #formPage.show{display:flex}
-.form-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:20px;
-}
+.form-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
 .form-header h2{font-size:20px;margin:0;font-weight:700;color:var(--text);}
-.form-body{
-  flex:1;
-  display:flex;flex-direction:column;gap:14px;
-}
+.form-body{flex:1;display:flex;flex-direction:column;gap:14px;}
 .form-row{
   display:flex;flex-direction:column;gap:6px;
   background:var(--card);border:1px solid var(--line);
@@ -318,25 +248,15 @@ h1{
 .form-row label{font-size:13px;color:var(--muted);font-weight:500;}
 .form-row input, .form-row textarea{
   width:100%;border:0;outline:none;
-  font-size:15px;font-family:inherit;
-  padding:4px 0;
-  background:transparent;
-  color:var(--input-text);
+  font-size:15px;font-family:inherit;padding:4px 0;
+  background:transparent;color:var(--input-text);
   -webkit-text-fill-color: var(--input-text);
 }
 .form-row textarea{min-height:70px;resize:vertical;}
-.form-footer{
-  display:flex;gap:12px;margin-top:20px;
-}
-.form-footer .btn.primary{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;
-}
-.form-footer .btn:not(.primary){
-  background:var(--card2);color:var(--text);
-}
+.form-footer{display:flex;gap:12px;margin-top:20px;}
+.form-footer .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;}
+.form-footer .btn:not(.primary){background:var(--card2);color:var(--text);}
 
-/* ================= 弹层 ================= */
 .sheet{
   position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.3);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
@@ -363,7 +283,7 @@ h1{
 .dhead{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .dhead .ic{width:60px;height:60px;border-radius:18px;background:var(--card2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:26px;font-weight:700;flex:0 0 auto;color:var(--accent);}
 .dhead .ic img{width:100%;height:100%;object-fit:cover}
-.dhead .nm{font-size:18px;font-weight:700;line-height:1.3;color:var(--text)}
+.dhead .nm{font-size:18px;font-weight:700;line-height:1.3;color:var(--text);word-break:break-all;}
 .dhead .u{font-size:11px;color:var(--muted);word-break:break-all;margin-top:4px;}
 
 .field{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:9px;}
@@ -406,6 +326,8 @@ h1{
   box-shadow:0 12px 32px rgba(0,0,0,.2);
 }
 #toast.show{opacity:1;transform:translate(-50%,0);}
+
+.file-input-hidden { display: none; }
 </style>
 </head>
 <body>
@@ -422,36 +344,39 @@ h1{
     </div>
   </div>
   <div class="mode-switch">
-    <button class="mode-btn on" id="modeLink" data-mode="link">📱 小手机链接</button>
-    <button class="mode-btn" id="modeApi" data-mode="api">🔑 API 管理</button>
+    <button class="mode-btn on" id="modeLink" data-mode="link">📱 链接</button>
+    <button class="mode-btn" id="modeApi" data-mode="api">🔑 API</button>
+    <button class="mode-btn" id="modeFile" data-mode="file">📁 备份文件</button>
   </div>
-  <input id="search" type="search" placeholder="搜索名称、网址、备注、标签…" autocomplete="off">
+  <input id="search" type="search" placeholder="搜索…" autocomplete="off">
   <div class="scroller" id="cats"></div>
   <div class="scroller tags" id="tagBar"></div>
 </header>
 
 <div id="list"></div>
 
+<!-- 隐藏的文件选择器 -->
+<input type="file" id="hiddenFileInput" class="file-input-hidden" multiple>
+
+<!-- 添加/编辑表单 -->
 <div id="formPage">
   <div class="form-header">
-    <h2 id="formTitle">添加链接</h2>
+    <h2 id="formTitle">添加</h2>
     <button class="tbtn" data-close-page>✕</button>
   </div>
   <div class="form-body">
     <div class="form-row">
       <label>名称 *</label>
-      <input type="text" id="fName" placeholder="例如：小火箭 V2 / OpenAI Key">
+      <input type="text" id="fName" placeholder="例如：小火箭 V2 / OpenAI Key / 备份2024-01">
     </div>
-    <div class="form-row">
+    <div class="form-row" id="rowUrl">
       <label>网址 *</label>
       <input type="text" id="fUrl" placeholder="https://… 或任意链接">
     </div>
-    <!-- API 模式专属：密钥输入框 -->
     <div class="form-row" id="apiSecretRow" style="display:none;">
       <label>密钥 / Key</label>
       <input type="text" id="fSecret" placeholder="sk-..." style="-webkit-text-security: disc;">
     </div>
-    <!-- 链接模式专属字段 -->
     <div class="form-row link-only">
       <label>分类</label>
       <input type="text" id="fCat" list="catList" placeholder="例如：小火箭">
@@ -480,8 +405,13 @@ h1{
   </div>
 </div>
 
+<!-- 文件详情 -->
+<div class="sheet" id="fileDetail"><div class="box" id="fileDetailBox"></div></div>
+
+<!-- 链接/API 详情 -->
 <div class="sheet" id="detail"><div class="box" id="detailBox"></div></div>
 
+<!-- 主题面板 -->
 <div class="sheet" id="themeSheet">
   <div class="box">
     <h2>主题与外观</h2>
@@ -505,6 +435,7 @@ h1{
   </div>
 </div>
 
+<!-- 数据备份面板 -->
 <div class="sheet" id="backupSheet">
   <div class="box">
     <h2>备份与恢复</h2>
@@ -512,13 +443,14 @@ h1{
       <button class="btn primary" id="exportBtn">导出备份（JSON）</button>
       <button class="btn" id="importBtn">导入备份</button>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
-      <button class="btn" id="copyAllBtn">复制当前模式所有链接/密钥</button>
+      <button class="btn" id="copyAllBtn">复制当前模式所有内容</button>
       <button class="btn danger" id="clearBtn">清空全部数据</button>
       <button class="btn ghost" data-close>关闭</button>
     </div>
     <p class="hint" style="margin-top:16px">
       共 <span id="statCount">0</span> 条 · 分类 <span id="statCat">0</span> 个 · 标签 <span id="statTag">0</span> 个<br>
-      数据保存在本地浏览器。换设备或清缓存前，请务必导出备份！
+      数据保存在本地浏览器。换设备或清缓存前，请务必导出备份！<br>
+      <b>文件仓库</b>：共 <span id="statFiles">0</span> 个文件 · 总大小 <span id="statFilesSize">0 KB</span>
     </p>
   </div>
 </div>
@@ -526,6 +458,7 @@ h1{
 <div id="toast"></div>
 
 <script>
+/* ================= 主题数据 ================= */
 const THEMES = {
   glass:  { label:'毛玻璃', v:{ bg:'#e8ecf4', card:'rgba(255,255,255,.55)', card2:'rgba(255,255,255,.8)', text:'#1a2233', muted:'#6b7891', accent:'#4f8cff', accent2:'#a78bfa', line:'rgba(255,255,255,.85)', star:'#f5a524', danger:'#ef4444' } },
   dark:   { label:'深空',   v:{ bg:'#0b0f14', card:'rgba(22,28,36,.7)', card2:'#1e2630', text:'#e8eef5', muted:'#8b9aab', accent:'#38bdf8', accent2:'#a855f7', line:'rgba(255,255,255,.08)', star:'#fbbf24', danger:'#f87171' } },
@@ -541,10 +474,14 @@ const CSS_KEY = 'linklib_customcss';
 const VIEW_KEY = 'linklib_viewmode';
 const BG_KEY = 'linklib_custombg';
 const MODE_KEY = 'linklib_mode';
+const DB_NAME = 'yuan_files_db';
+const DB_STORE = 'files';
+
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
 let items = [];
+let files = [];         // 文件列表（元数据）
 let curCat = 'all';
 let curTag = null;
 let sortMode = 'new';
@@ -552,7 +489,7 @@ let editingId = null;
 let detailId = null;
 let formStar = false;
 let viewMode = localStorage.getItem(VIEW_KEY) || 'card';
-let currentMode = localStorage.getItem(MODE_KEY) || 'link'; // 'link' | 'api'
+let currentMode = localStorage.getItem(MODE_KEY) || 'link';
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
@@ -563,12 +500,24 @@ function normalizeUrl(u){
   if(!/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(u)) u = 'https://' + u;
   return u;
 }
+function formatSize(bytes){
+  if(!bytes) return '0 B';
+  if(bytes < 1024) return bytes + ' B';
+  if(bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  if(bytes < 1024 * 1024 * 1024) return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+  return (bytes / 1024 / 1024 / 1024).toFixed(2) + ' GB';
+}
+function formatTime(ts){
+  const d = new Date(ts);
+  const pad = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
 let toastTimer;
 function toast(msg){
   const t = $('#toast');
   t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 1900);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
 }
 async function copyText(t){
   try{ await navigator.clipboard.writeText(t); toast('已复制'); }
@@ -585,26 +534,101 @@ function closeAll(){ $$('.sheet').forEach(s => s.classList.remove('show')); }
 function closeForm(){ $('#formPage').classList.remove('show'); }
 function parseTags(s){ return String(s || '').split(/[,，\s]+/).map(x => x.trim()).filter(Boolean); }
 
+/* ================= IndexedDB 文件仓库 ================= */
+function openDB(){
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onupgradeneeded = e => {
+      const db = e.target.result;
+      if(!db.objectStoreNames.contains(DB_STORE)){
+        db.createObjectStore(DB_STORE, { keyPath: 'id' });
+      }
+    };
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror = e => reject(e.target.error);
+  });
+}
+async function dbPutFile(record){
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    tx.objectStore(DB_STORE).put(record);
+    tx.oncomplete = () => resolve();
+    tx.onerror = e => reject(e.target.error);
+  });
+}
+async function dbGetAllFiles(){
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readonly');
+    const req = tx.objectStore(DB_STORE).getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = e => reject(e.target.error);
+  });
+}
+async function dbGetFile(id){
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readonly');
+    const req = tx.objectStore(DB_STORE).get(id);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = e => reject(e.target.error);
+  });
+}
+async function dbDeleteFile(id){
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    tx.objectStore(DB_STORE).delete(id);
+    tx.oncomplete = () => resolve();
+    tx.onerror = e => reject(e.target.error);
+  });
+}
+async function dbUpdateFile(id, patch){
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    const store = tx.objectStore(DB_STORE);
+    const req = store.get(id);
+    req.onsuccess = () => {
+      const rec = req.result;
+      if(!rec) return;
+      Object.assign(rec, patch);
+      store.put(rec);
+    };
+    tx.oncomplete = () => resolve();
+    tx.onerror = e => reject(e.target.error);
+  });
+}
+async function loadFiles(){
+  const all = await dbGetAllFiles();
+  // 只保留元数据，不把 blob 放到 files 数组里（节省内存）
+  files = all.map(f => ({
+    id: f.id, name: f.name, size: f.size, type: f.type,
+    note: f.note || '', createdAt: f.createdAt
+  }));
+  files.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+}
+
 /* ================= 模式切换 ================= */
 function setMode(mode){
   currentMode = mode;
   localStorage.setItem(MODE_KEY, mode);
   $('#modeLink').classList.toggle('on', mode === 'link');
   $('#modeApi').classList.toggle('on', mode === 'api');
-  
-  // 切换头部搜索框 placeholder
-  $('#search').placeholder = mode === 'link' 
-    ? '搜索名称、网址、备注、标签…' 
-    : '搜索名称、URL、密钥…';
+  $('#modeFile').classList.toggle('on', mode === 'file');
 
-  // 控制表单里字段的显示
+  $('#search').placeholder = mode === 'link' ? '搜索名称、网址、备注、标签…'
+    : mode === 'api' ? '搜索名称、URL、密钥…'
+    : '搜索文件名、备注…';
+
   $$('.link-only').forEach(el => el.style.display = mode === 'link' ? 'flex' : 'none');
   $('#apiSecretRow').style.display = mode === 'api' ? 'flex' : 'none';
-  
+
   renderAll();
 }
 
-/* ================= 主题引擎 ================= */
+/* ================= 主题 ================= */
 function applyTheme(themeKey){
   const t = THEMES[themeKey] || THEMES.glass;
   document.documentElement.setAttribute('data-theme', themeKey);
@@ -626,7 +650,6 @@ function renderThemeList(){
       <span class="dot" style="background:${t.v.bg};"></span>
     </div>`).join('');
 }
-
 function applyCustomBg(dataUrl){
   if(dataUrl){
     document.body.style.backgroundImage = `url(${dataUrl})`;
@@ -666,40 +689,46 @@ function compressImage(file, callback){
   reader.readAsDataURL(file);
 }
 
-/* ================= 数据 ================= */
+/* ================= 数据（链接/API） ================= */
 function load(){ try{ const a = JSON.parse(localStorage.getItem(KEY) || '[]'); items = Array.isArray(a) ? a : []; }catch(e){ items = []; } }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(items)); }catch(e){ toast('保存失败'); } }
 function allCats(){ const m = new Map(); items.filter(i => i.type !== 'api').forEach(it => { const c = (it.cat || '').trim(); if(!c) return; m.set(c, (m.get(c) || 0) + 1); }); return [...m.entries()].sort((a, b) => b[1] - a[1]); }
 function allTags(){ const m = new Map(); items.filter(i => i.type !== 'api').forEach(it => (it.tags || []).forEach(t => { m.set(t, (m.get(t) || 0) + 1); })); return [...m.entries()].sort((a, b) => b[1] - a[1]); }
 
-function visible(){
+function visibleItems(){
   const q = $('#search').value.trim().toLowerCase();
-  // 先根据模式过滤
   let list = items.filter(it => {
     const isApi = it.type === 'api';
     if(currentMode === 'api' && !isApi) return false;
     if(currentMode === 'link' && isApi) return false;
-    
-    // 链接模式的额外过滤
     if(currentMode === 'link'){
       if(curCat === 'star' && !it.star) return false;
       if(curCat === 'none' && (it.cat || '').trim()) return false;
       if(curCat !== 'all' && curCat !== 'star' && curCat !== 'none' && (it.cat || '').trim() !== curCat) return false;
       if(curTag && !(it.tags || []).includes(curTag)) return false;
     }
-    
-    // 搜索
     if(q){
       const hay = [it.name, it.url, it.note, it.cat, it.secret, (it.tags || []).join(' ')].join(' ').toLowerCase();
       if(!hay.includes(q)) return false;
     }
     return true;
   });
-  
   if(sortMode === 'name'){ list.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'zh')); }
   else if(sortMode === 'updated'){ list.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0)); }
   else{ list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)); }
   if(currentMode === 'link') list.sort((a, b) => (b.star ? 1 : 0) - (a.star ? 1 : 0));
+  return list;
+}
+function visibleFiles(){
+  const q = $('#search').value.trim().toLowerCase();
+  let list = files.filter(f => {
+    if(!q) return true;
+    const hay = [f.name, f.note].join(' ').toLowerCase();
+    return hay.includes(q);
+  });
+  if(sortMode === 'name') list.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'zh'));
+  else if(sortMode === 'updated') list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  else list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   return list;
 }
 
@@ -712,9 +741,12 @@ function iconHTML(it){
   return esc(n || '?');
 }
 function renderCats(){
-  if(currentMode === 'api'){ $('#cats').style.display = 'none'; $('#tagBar').style.display = 'none'; return; }
+  if(currentMode !== 'link'){
+    $('#cats').style.display = 'none';
+    $('#tagBar').style.display = 'none';
+    return;
+  }
   $('#cats').style.display = 'flex'; $('#tagBar').style.display = 'flex';
-  
   const cats = allCats();
   const starN = items.filter(x => x.type !== 'api' && x.star).length;
   const noneN = items.filter(x => x.type !== 'api' && !(x.cat || '').trim()).length;
@@ -727,7 +759,7 @@ function renderCats(){
   if(dl) dl.innerHTML = cats.map(([c]) => `<option value="${esc(c)}">`).join('');
 }
 function renderTags(){
-  if(currentMode === 'api') return;
+  if(currentMode !== 'link') return;
   const tags = allTags();
   if(!tags.length){ $('#tagBar').innerHTML = ''; return; }
   $('#tagBar').innerHTML = tags.map(([t, n]) => `
@@ -736,22 +768,47 @@ function renderTags(){
     </button>`).join('');
 }
 function renderList(){
-  const list = visible();
   const grid = $('#list');
-  
+  if(currentMode === 'file'){
+    grid.className = 'file-mode';
+    $('#viewToggleBtn').style.display = 'none';
+    const list = visibleFiles();
+    if(!list.length){
+      grid.innerHTML = `<div class="empty">${files.length ? '没有匹配的文件' : '还没有备份文件<br>点右上角 + 上传第一个'}</div>`;
+      return;
+    }
+    grid.innerHTML = list.map(f => `
+      <div class="item file-item" data-id="${esc(f.id)}">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+          <div class="file-name">📄 ${esc(f.name)}</div>
+          <button class="more-btn" style="position:static;" data-more="${esc(f.id)}">⋯</button>
+        </div>
+        <div class="file-meta">
+          <span>📦 ${esc(formatSize(f.size))}</span>
+          <span>🕐 ${esc(formatTime(f.createdAt))}</span>
+        </div>
+        ${f.note ? `<div class="note">${esc(f.note)}</div>` : ''}
+        <div class="file-actions">
+          <button class="act-btn" data-download="${esc(f.id)}">下载</button>
+          <button class="act-btn" data-copy-name="${esc(f.name)}">复制文件名</button>
+        </div>
+      </div>`).join('');
+    return;
+  }
+
+  const list = visibleItems();
   if(currentMode === 'api'){
     grid.className = 'api-mode';
+    $('#viewToggleBtn').style.display = 'none';
   } else {
     grid.className = viewMode === 'icon' ? 'icon-mode' : '';
+    $('#viewToggleBtn').style.display = 'flex';
+    $('#viewToggleBtn').textContent = viewMode === 'icon' ? '🔳' : '🔲';
   }
-  $('#viewToggleBtn').style.display = currentMode === 'api' ? 'none' : 'flex';
-  $('#viewToggleBtn').textContent = viewMode === 'icon' ? '🔳' : '🔲';
-
   if(!list.length){
     grid.innerHTML = `<div class="empty">${items.length ? '没有匹配的结果' : '还没有数据<br>点右上角 + 添加第一个'}</div>`;
     return;
   }
-  
   if(currentMode === 'api'){
     grid.innerHTML = list.map(it => {
       const maskedKey = it.secret ? '••••••••••••••••' : '（无密钥）';
@@ -761,14 +818,14 @@ function renderList(){
             <div class="api-name">${esc(it.name || '未命名 API')}</div>
             <button class="more-btn" style="position:static;" data-more="${esc(it.id)}">⋯</button>
           </div>
-          <div class="api-row" data-copy-url="${esc(it.url)}">
+          <div class="api-row">
             <span class="api-label">URL</span>
             <span class="api-text">${esc(it.url || '')}</span>
             <button class="copy-btn" data-copy-url="${esc(it.url)}">复制</button>
           </div>
-          <div class="api-row" data-copy-secret="${esc(it.secret)}">
+          <div class="api-row">
             <span class="api-label">密钥</span>
-            <span class="api-text masked" id="mask-${esc(it.id)}">${maskedKey}</span>
+            <span class="api-text masked">${maskedKey}</span>
             <button class="copy-btn" data-copy-secret="${esc(it.secret)}">复制</button>
           </div>
         </div>`;
@@ -805,6 +862,9 @@ function renderAll(){
   $('#statCount').textContent = items.length;
   $('#statCat').textContent = allCats().length;
   $('#statTag').textContent = allTags().length;
+  $('#statFiles').textContent = files.length;
+  const total = files.reduce((s, f) => s + (f.size || 0), 0);
+  $('#statFilesSize').textContent = formatSize(total);
 }
 function fieldHTML(k, v, mono){
   if(!v) return '';
@@ -819,7 +879,6 @@ function openDetail(id){
   const url = normalizeUrl(it.url);
   const tags = (it.tags || []).map(t => `#${t}`).join('  ');
   const isApi = it.type === 'api';
-
   $('#detailBox').innerHTML = `
     <div class="dhead">
       <div class="ic">${isApi ? '🔑' : iconHTML(it)}</div>
@@ -842,6 +901,28 @@ function openDetail(id){
     <div class="actions"><button class="btn ghost" data-close>关闭</button></div>`;
   $('#detail').classList.add('show');
 }
+function openFileDetail(id){
+  const f = files.find(x => x.id === id);
+  if(!f) return;
+  detailId = id;
+  $('#fileDetailBox').innerHTML = `
+    <div class="dhead">
+      <div class="ic">📄</div>
+      <div style="min-width:0"><div class="nm">${esc(f.name)}</div><div class="u">${esc(formatSize(f.size))}</div></div>
+    </div>
+    ${fieldHTML('上传时间', formatTime(f.createdAt))}
+    ${fieldHTML('备注', f.note)}
+    <div class="actions">
+      <button class="btn primary" data-file-act="download">下载文件</button>
+      <button class="btn" data-file-act="rename">重命名</button>
+    </div>
+    <div class="actions">
+      <button class="btn" data-file-act="edit-note">编辑备注</button>
+      <button class="btn danger" data-file-act="del">删除</button>
+    </div>
+    <div class="actions"><button class="btn ghost" data-close>关闭</button></div>`;
+  $('#fileDetail').classList.add('show');
+}
 
 /* ================= 表单 ================= */
 function setStar(v){ formStar = v; const el = $('#starToggle'); el.classList.toggle('on', v); el.querySelector('.s').textContent = v ? '★' : '☆'; el.querySelector('.s').style.color = v ? 'var(--star)' : 'var(--muted)'; }
@@ -849,7 +930,6 @@ function openForm(id){
   editingId = id || null;
   const it = id ? items.find(x => x.id === id) : null;
   const isApi = currentMode === 'api' || it?.type === 'api';
-  
   $('#formTitle').textContent = it ? '编辑' : (isApi ? '添加 API' : '添加链接');
   $('#fName').value = it?.name || '';
   $('#fUrl').value = it?.url || '';
@@ -859,56 +939,102 @@ function openForm(id){
   $('#fTags').value = (it?.tags || []).join(', ');
   $('#fNote').value = it?.note || '';
   setStar(!!it?.star);
-  
-  // 控制表单字段显示
   $$('.link-only').forEach(el => el.style.display = isApi ? 'none' : 'flex');
   $('#apiSecretRow').style.display = isApi ? 'flex' : 'none';
-  
   $('#formPage').classList.add('show');
   setTimeout(() => $('#fName').focus(), 80);
+}
+
+/* ================= 文件上传/下载 ================= */
+async function handleFilesUpload(fileList){
+  if(!fileList || !fileList.length) return;
+  let n = 0;
+  for(const f of fileList){
+    const id = uid();
+    try{
+      await dbPutFile({
+        id, name: f.name, size: f.size, type: f.type || '',
+        data: f, note: '', createdAt: Date.now()
+      });
+      n++;
+    }catch(e){ toast('上传失败：' + f.name); }
+  }
+  await loadFiles();
+  renderAll();
+  toast('已上传 ' + n + ' 个文件');
+}
+async function downloadFile(id){
+  const rec = await dbGetFile(id);
+  if(!rec || !rec.data){ toast('文件不存在'); return; }
+  const url = URL.createObjectURL(rec.data);
+  const a = document.createElement('a');
+  a.href = url; a.download = rec.name || 'file';
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+  toast('开始下载：' + rec.name);
 }
 
 /* ================= 事件绑定 ================= */
 $('#cats').addEventListener('click', e => { const c = e.target.closest('[data-cat]'); if(!c) return; curCat = c.dataset.cat; renderAll(); });
 $('#tagBar').addEventListener('click', e => { const t = e.target.closest('[data-tag]'); if(!t) return; curTag = (curTag === t.dataset.tag) ? null : t.dataset.tag; renderAll(); });
 
-// 核心交互：点击复制 / 打开详情
-$('#list').addEventListener('click', e => {
-  // 复制 URL
+$('#list').addEventListener('click', async e => {
+  // 复制
   const copyUrlBtn = e.target.closest('[data-copy-url]');
   if(copyUrlBtn){ e.stopPropagation(); copyText(copyUrlBtn.dataset.copyUrl); return; }
-  
-  // 复制密钥
   const copySecretBtn = e.target.closest('[data-copy-secret]');
   if(copySecretBtn){ e.stopPropagation(); copyText(copySecretBtn.dataset.copySecret); return; }
-  
-  // 更多按钮
+  const copyNameBtn = e.target.closest('[data-copy-name]');
+  if(copyNameBtn){ e.stopPropagation(); copyText(copyNameBtn.dataset.copyName); return; }
+  // 文件下载按钮
+  const dlBtn = e.target.closest('[data-download]');
+  if(dlBtn){ e.stopPropagation(); await downloadFile(dlBtn.dataset.download); return; }
+  // 更多
   const moreBtn = e.target.closest('[data-more]');
-  if(moreBtn){ e.stopPropagation(); openDetail(moreBtn.dataset.more); return; }
-  
+  if(moreBtn){
+    e.stopPropagation();
+    if(currentMode === 'file') openFileDetail(moreBtn.dataset.more);
+    else openDetail(moreBtn.dataset.more);
+    return;
+  }
   // 点击卡片主体
   const item = e.target.closest('.item');
   if(item){
-    const it = items.find(x => x.id === item.dataset.id);
+    const id = item.dataset.id;
+    if(currentMode === 'file'){ openFileDetail(id); return; }
+    if(currentMode === 'api'){ openDetail(id); return; }
+    const it = items.find(x => x.id === id);
     if(!it) return;
-    // 如果是 API 模式，点击卡片主体默认打开详情
-    if(currentMode === 'api'){ openDetail(it.id); return; }
-    
     const url = normalizeUrl(it.url);
     if(url){ window.open(url, '_blank', 'noopener'); }
-    else { openDetail(it.id); }
+    else { openDetail(id); }
   }
 });
 
 $('#search').addEventListener('input', renderList);
-$('#addBtn').addEventListener('click', () => openForm(null));
-$('#sortBtn').addEventListener('click', () => { sortMode = sortMode === 'new' ? 'name' : sortMode === 'name' ? 'updated' : 'new'; toast('排序：' + (sortMode === 'new' ? '按添加时间' : sortMode === 'name' ? '按名称' : '按修改时间')); renderList(); });
+
+// 点 + 根据模式走不同逻辑
+$('#addBtn').addEventListener('click', () => {
+  if(currentMode === 'file') $('#hiddenFileInput').click();
+  else openForm(null);
+});
+
+$('#hiddenFileInput').addEventListener('change', async e => {
+  await handleFilesUpload(e.target.files);
+  e.target.value = '';
+});
+
+$('#sortBtn').addEventListener('click', () => {
+  sortMode = sortMode === 'new' ? 'name' : sortMode === 'name' ? 'updated' : 'new';
+  toast('排序：' + (sortMode === 'new' ? '最新' : sortMode === 'name' ? '按名称' : '最近修改'));
+  renderList();
+});
 $('#themeBtn').addEventListener('click', () => $('#themeSheet').classList.add('show'));
 $('#backupBtn').addEventListener('click', () => $('#backupSheet').classList.add('show'));
 
-// 模式切换
 $('#modeLink').addEventListener('click', () => setMode('link'));
 $('#modeApi').addEventListener('click', () => setMode('api'));
+$('#modeFile').addEventListener('click', () => setMode('file'));
 
 $('#viewToggleBtn').addEventListener('click', () => {
   viewMode = viewMode === 'card' ? 'icon' : 'card';
@@ -922,11 +1048,9 @@ $('#saveBtn').addEventListener('click', () => {
   const name = $('#fName').value.trim(); const url = $('#fUrl').value.trim();
   if(!name && !url){ toast('名称和网址至少填一个'); return; }
   const isApi = currentMode === 'api' || (editingId && items.find(x => x.id === editingId)?.type === 'api');
-  
   const data = {
     type: isApi ? 'api' : 'link',
-    name: name || url,
-    url,
+    name: name || url, url,
     secret: isApi ? $('#fSecret').value.trim() : '',
     cat: isApi ? '' : $('#fCat').value.trim(),
     icon: isApi ? '🔑' : $('#fIcon').value.trim(),
@@ -935,15 +1059,16 @@ $('#saveBtn').addEventListener('click', () => {
     star: isApi ? false : formStar,
     updatedAt: Date.now()
   };
-  
   if(editingId){ const i = items.findIndex(x => x.id === editingId); if(i > -1) items[i] = { ...items[i], ...data }; }
   else { items.unshift({ id: uid(), createdAt: Date.now(), ...data }); }
   save(); renderAll(); closeForm(); toast(editingId ? '已保存' : '已添加');
 });
 
-document.addEventListener('click', e => {
+document.addEventListener('click', async e => {
   if(e.target.closest('[data-close-page]')){ closeForm(); return; }
   if(e.target.closest('[data-close]')){ closeAll(); return; }
+
+  // 链接/API 详情操作
   const a = e.target.closest('[data-act]');
   if(a){
     const act = a.getAttribute('data-act'); const it = items.find(x => x.id === detailId); if(!it) return;
@@ -952,12 +1077,42 @@ document.addEventListener('click', e => {
     else if(act === 'copy-secret'){ copyText(it.secret || ''); }
     else if(act === 'star'){ it.star = !it.star; it.updatedAt = Date.now(); save(); renderAll(); openDetail(detailId); }
     else if(act === 'edit'){ closeAll(); openForm(detailId); }
-    else if(act === 'del'){ if(confirm('确定删除这条？')){ items = items.filter(x => x.id !== detailId); save(); renderAll(); closeAll(); toast('已删除'); } }
+    else if(act === 'del'){ if(confirm('确定删除？')){ items = items.filter(x => x.id !== detailId); save(); renderAll(); closeAll(); toast('已删除'); } }
+  }
+
+  // 文件详情操作
+  const fa = e.target.closest('[data-file-act]');
+  if(fa){
+    const act = fa.getAttribute('data-file-act');
+    const rec = await dbGetFile(detailId);
+    if(!rec) return;
+    if(act === 'download'){ await downloadFile(detailId); }
+    else if(act === 'rename'){
+      const newName = prompt('重命名文件：', rec.name);
+      if(newName && newName.trim()){
+        await dbUpdateFile(detailId, { name: newName.trim() });
+        await loadFiles(); renderAll(); closeAll(); toast('已重命名');
+      }
+    }
+    else if(act === 'edit-note'){
+      const note = prompt('编辑备注：', rec.note || '');
+      if(note !== null){
+        await dbUpdateFile(detailId, { note: note.trim() });
+        await loadFiles(); renderAll(); closeAll(); toast('备注已保存');
+      }
+    }
+    else if(act === 'del'){
+      if(confirm('确定删除这个文件？')){
+        await dbDeleteFile(detailId);
+        await loadFiles(); renderAll(); closeAll(); toast('已删除');
+      }
+    }
   }
 });
 $$('.sheet').forEach(s => { s.addEventListener('click', e => { if(e.target === s) s.classList.remove('show'); }); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeAll(); closeForm(); } });
 
+/* 主题/背景/CSS */
 $('#bgPreview').addEventListener('click', () => $('#bgUpload').click());
 $('#bgUpload').addEventListener('change', e => {
   const f = e.target.files[0]; if(!f) return;
@@ -965,23 +1120,34 @@ $('#bgUpload').addEventListener('change', e => {
   e.target.value = '';
 });
 $('#bgReset').addEventListener('click', () => { applyCustomBg(''); toast('已恢复默认背景'); });
-
 $('#themeList').addEventListener('click', e => { const t = e.target.closest('.theme-item'); if(!t) return; applyTheme(t.dataset.k); toast('已切换：' + THEMES[t.dataset.k]?.label); });
 $('#customCss').addEventListener('input', e => { applyCustomCss(e.target.value); });
 $('#cssReset').addEventListener('click', () => { $('#customCss').value = ''; applyCustomCss(''); toast('已清空 CSS'); });
 $('#cssCopy').addEventListener('click', () => { copyText($('#customCss').value || ''); });
 
+/* 数据备份 */
 $('#exportBtn').addEventListener('click', () => {
-  const backup = { version: 1, exportedAt: new Date().toISOString(), theme: localStorage.getItem(THEME_KEY) || 'glass', viewMode, currentMode, customCss: localStorage.getItem(CSS_KEY) || '', customBg: localStorage.getItem(BG_KEY) || '', items };
+  const backup = {
+    version: 1, exportedAt: new Date().toISOString(),
+    theme: localStorage.getItem(THEME_KEY) || 'glass',
+    viewMode, currentMode,
+    customCss: localStorage.getItem(CSS_KEY) || '',
+    customBg: localStorage.getItem(BG_KEY) || '',
+    items,
+    filesMeta: files.map(f => ({ name: f.name, size: f.size, note: f.note, createdAt: f.createdAt }))
+  };
   const blob = new Blob([JSON.stringify(backup, null, 2)], { type:'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '缘备份-' + new Date().toISOString().slice(0,10) + '.json';
-  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1500); toast('已导出（含背景+主题+CSS）');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = '缘备份-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  toast('已导出（含背景+主题+CSS）');
 });
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
 $('#importFile').addEventListener('change', async e => {
   const f = e.target.files[0]; if(!f) return;
   try{
-    const raw = JSON.parse(await f.text()); const arr = Array.isArray(raw) ? raw : (raw.items || []);
+    const raw = JSON.parse(await f.text());
+    const arr = Array.isArray(raw) ? raw : (raw.items || []);
     if(!Array.isArray(arr)) throw new Error('格式不对');
     let n = 0;
     arr.forEach(x => {
@@ -996,32 +1162,54 @@ $('#importFile').addEventListener('change', async e => {
       if(raw.currentMode){ setMode(raw.currentMode); }
       if(typeof raw.customBg === 'string' && raw.customBg){ applyCustomBg(raw.customBg); }
     }
-    save(); renderAll(); closeAll(); toast('导入 ' + n + ' 条');
+    save(); renderAll(); closeAll();
+    toast('导入 ' + n + ' 条' + (raw.filesMeta ? '（文件元信息已忽略，请手动上传）' : ''));
   }catch(err){ toast('导入失败：' + err.message); }
   e.target.value = '';
 });
 $('#copyAllBtn').addEventListener('click', () => {
-  const list = visible(); if(!list.length){ toast('没有可复制的'); return; }
-  let txt = '';
   if(currentMode === 'api'){
-    txt = list.map(it => `【${it.name || '未命名'}】\nURL: ${it.url}${it.secret ? '\n密钥: ' + it.secret : ''}`).join('\n\n');
+    const list = visibleItems(); if(!list.length){ toast('没有可复制的'); return; }
+    const txt = list.map(it => `【${it.name || '未命名'}】\nURL: ${it.url}${it.secret ? '\n密钥: ' + it.secret : ''}`).join('\n\n');
+    copyText(txt);
+  } else if(currentMode === 'file'){
+    const list = visibleFiles(); if(!list.length){ toast('没有可复制的'); return; }
+    const txt = list.map(f => `【${f.name}】${formatSize(f.size)} · ${formatTime(f.createdAt)}${f.note ? '\n备注：' + f.note : ''}`).join('\n\n');
+    copyText(txt);
   } else {
-    txt = list.map(it => `【${it.name || '未命名'}】${it.cat ? ' [' + it.cat + ']' : ''}\n${it.url}${it.note ? '\n备注：' + it.note : ''}`).join('\n\n');
+    const list = visibleItems(); if(!list.length){ toast('没有可复制的'); return; }
+    const txt = list.map(it => `【${it.name || '未命名'}】${it.cat ? ' [' + it.cat + ']' : ''}\n${it.url}${it.note ? '\n备注：' + it.note : ''}`).join('\n\n');
+    copyText(txt);
   }
-  copyText(txt);
 });
-$('#clearBtn').addEventListener('click', () => { if(confirm('确定清空全部数据？建议先导出备份。')){ items = []; save(); renderAll(); closeAll(); toast('已清空'); } });
+$('#clearBtn').addEventListener('click', async () => {
+  if(confirm('确定清空全部数据？包括所有链接、API 和上传的备份文件。建议先导出备份。')){
+    items = [];
+    save();
+    // 清空 IndexedDB 文件
+    const db = await openDB();
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    tx.objectStore(DB_STORE).clear();
+    await new Promise(res => tx.oncomplete = res);
+    files = [];
+    renderAll(); closeAll(); toast('已清空');
+  }
+});
 
 /* ================= 启动 ================= */
-renderThemeList();
-applyTheme(localStorage.getItem(THEME_KEY) || 'glass');
-const savedCss = localStorage.getItem(CSS_KEY) || '';
-$('#customCss').value = savedCss;
-applyCustomCss(savedCss);
-const savedBg = localStorage.getItem(BG_KEY) || '';
-if(savedBg) applyCustomBg(savedBg);
-setMode(localStorage.getItem(MODE_KEY) || 'link');
-load(); renderAll();
+(async function init(){
+  renderThemeList();
+  applyTheme(localStorage.getItem(THEME_KEY) || 'glass');
+  const savedCss = localStorage.getItem(CSS_KEY) || '';
+  $('#customCss').value = savedCss;
+  applyCustomCss(savedCss);
+  const savedBg = localStorage.getItem(BG_KEY) || '';
+  if(savedBg) applyCustomBg(savedBg);
+  setMode(localStorage.getItem(MODE_KEY) || 'link');
+  load();
+  await loadFiles();
+  renderAll();
+})();
 </script>
 </body>
 </html>
