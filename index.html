@@ -59,7 +59,6 @@ input, textarea, select {
   background: var(--input-bg);
 }
 input::placeholder, textarea::placeholder { color: var(--placeholder); }
-
 header{
   position:sticky; top:0; z-index:20;
   background:var(--card);
@@ -96,18 +95,16 @@ h1{
 }
 #search::placeholder{color:var(--placeholder)}
 #search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,140,255,.18)}
-
-.mode-switch{display:flex; gap:8px; margin-top:12px;}
+.mode-switch{display:flex; gap:6px; margin-top:12px;}
 .mode-btn{
-  flex:1; padding:10px 4px; border-radius:12px; border:1px solid var(--line);
-  background:var(--card); color:var(--muted); font-size:12.5px; font-weight:600;
+  flex:1; padding:10px 2px; border-radius:12px; border:1px solid var(--line);
+  background:var(--card); color:var(--muted); font-size:11.5px; font-weight:600;
   cursor:pointer; transition:.15s; font-family:inherit; white-space:nowrap;
 }
 .mode-btn.on{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   color:#fff; border-color:transparent; box-shadow:0 4px 14px rgba(100,140,255,.3);
 }
-
 .scroller{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .scroller::-webkit-scrollbar{display:none}
 .chip{
@@ -127,27 +124,19 @@ h1{
 .tags .chip{font-size:12px;padding:5px 11px}
 .tags{padding-bottom:12px}
 .tags:empty{display:none}
-
 #list{
   padding:16px;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
   gap:14px;
 }
-#list.icon-mode{
-  grid-template-columns:repeat(auto-fill,minmax(84px,1fr));
-  gap:18px 12px;
-}
-#list.api-mode, #list.file-mode{
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
+#list.icon-mode{grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:18px 12px;}
+#list.api-mode, #list.file-mode{grid-template-columns: 1fr;gap: 12px;}
 @media(max-width:420px){
   #list{grid-template-columns:1fr 1fr;gap:11px;padding:12px}
   #list.icon-mode{grid-template-columns:repeat(4,1fr);gap:14px 10px;padding:16px 12px}
   #list.api-mode, #list.file-mode{grid-template-columns:1fr;gap:12px;padding:12px}
 }
-
 .item{
   background:var(--card);border:1px solid var(--line); border-radius:18px;
   padding:14px;cursor:pointer;position:relative;
@@ -183,11 +172,7 @@ h1{
   display:flex;align-items:center;justify-content:center;
 }
 .item .more-btn:active{background:rgba(0,0,0,.1);color:var(--text)}
-
-.api-item, .file-item {
-  display: flex; flex-direction: column; gap: 8px;
-  min-height: auto; padding: 16px;
-}
+.api-item, .file-item {display: flex; flex-direction: column; gap: 8px;min-height: auto; padding: 16px;}
 .api-item .api-name, .file-item .file-name { font-size: 15px; font-weight: 700; color: var(--text); word-break: break-all; }
 .api-item .api-row {
   display: flex; align-items: center; gap: 8px;
@@ -216,7 +201,10 @@ h1{
   background: rgba(100,140,255,.15); border-radius: 6px;
   padding: 2px 8px; font-weight: 600;
 }
-
+.file-item .file-thumb {
+  width: 100%; max-height: 160px; border-radius: 10px;
+  object-fit: cover; margin-top: 4px; display: block;
+}
 #list.icon-mode .item{
   min-height: 88px; padding: 10px 4px; gap: 8px;
   justify-content: center; align-items: center; text-align: center;
@@ -229,9 +217,7 @@ h1{
 #list.icon-mode .item .meta,
 #list.icon-mode .item .st{ display: none !important; }
 #list.icon-mode .item .more-btn{ top: 4px; right: 4px; background: var(--card); border-radius: 50%; width: 20px; height: 20px; font-size: 14px; }
-
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:80px 20px;line-height:1.9;}
-
 #formPage, #fileFormPage{
   position:fixed;inset:0;z-index:200;
   background:var(--bg);
@@ -262,7 +248,43 @@ h1{
 .form-footer .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;}
 .form-footer .btn:not(.primary){background:var(--card2);color:var(--text);}
 
-/* 文件选择区（表单里） */
+/* 分类选择器 */
+.cat-picker{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--input-bg);border:1px solid var(--line);
+  border-radius:10px;padding:11px 14px;cursor:pointer;
+  transition:.15s;
+}
+.cat-picker:active{background:var(--card2)}
+.cat-picker .cat-current{font-size:15px;color:var(--input-text)}
+.cat-picker .cat-current.empty{color:var(--placeholder)}
+.cat-picker .cat-arrow{color:var(--muted);font-size:14px}
+
+/* 分类选择面板 */
+.cat-sheet{ z-index: 300 !important; }
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));
+  gap:10px;max-height:45vh;overflow-y:auto;padding:4px 2px;
+}
+.cat-cell{
+  background:var(--card2);border:1px solid var(--line);
+  border-radius:12px;padding:14px 8px;text-align:center;
+  font-size:13px;font-weight:600;color:var(--text);
+  cursor:pointer;transition:.15s;word-break:break-all;
+  display:flex;align-items:center;justify-content:center;min-height:52px;
+}
+.cat-cell:active{transform:scale(.95);background:var(--accent);color:#fff}
+.cat-cell.on{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;border-color:transparent;
+  box-shadow:0 4px 14px rgba(100,140,255,.4);
+}
+.cat-cell.cat-clear{
+  color:var(--danger);background:rgba(239,68,68,.08);
+  border-color:rgba(239,68,68,.2);
+}
+.cat-cell.cat-clear:active{background:var(--danger);color:#fff}
+
 .file-picker {
   display: flex; flex-direction: column; gap: 8px;
   background: var(--input-bg); border: 1px dashed var(--line);
@@ -270,13 +292,8 @@ h1{
   transition: .15s; text-align: center;
 }
 .file-picker:active { background: var(--card2); }
-.file-picker .picker-tip {
-  font-size: 13px; color: var(--muted); font-weight: 500;
-}
-.file-picker .picker-files {
-  font-size: 12px; color: var(--accent); word-break: break-all;
-  text-align: left; line-height: 1.6;
-}
+.file-picker .picker-tip { font-size: 13px; color: var(--muted); font-weight: 500; }
+.file-picker .picker-files { font-size: 12px; color: var(--accent); word-break: break-all; text-align: left; line-height: 1.6; }
 
 .sheet{
   position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.3);
@@ -300,18 +317,15 @@ h1{
 }
 .box h2{font-size:18px;margin:0 0 16px;font-weight:700;letter-spacing:.3px;color:var(--text);display:flex;align-items:center;gap:8px;}
 .box h2::before{content:'';width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,var(--accent),var(--accent2));}
-
 .dhead{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .dhead .ic{width:60px;height:60px;border-radius:18px;background:var(--card2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:26px;font-weight:700;flex:0 0 auto;color:var(--accent);}
 .dhead .ic img{width:100%;height:100%;object-fit:cover}
 .dhead .nm{font-size:18px;font-weight:700;line-height:1.3;color:var(--text);word-break:break-all;}
 .dhead .u{font-size:11px;color:var(--muted);word-break:break-all;margin-top:4px;}
-
 .field{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:9px;}
 .field .k{font-size:11px;color:var(--muted);margin-bottom:5px;}
 .field .v{font-size:14px;word-break:break-all;line-height:1.55;white-space:pre-wrap;color:var(--text);}
 .field .v.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;}
-
 .actions{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap}
 .actions.col{flex-direction:column}
 .btn{flex:1;min-width:80px;border:1px solid var(--line);border-radius:13px;padding:13px 14px;font-size:15px;cursor:pointer;background:var(--card);color:var(--text);font-family:inherit;font-weight:500;transition:.15s;box-shadow:0 3px 10px rgba(0,0,0,.04);}
@@ -319,15 +333,12 @@ h1{
 .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:700;border-color:transparent;box-shadow:0 6px 20px rgba(100,140,255,.35);}
 .btn.danger{background:rgba(239,68,68,.12);color:var(--danger);border-color:rgba(239,68,68,.3);}
 .btn.ghost{background:transparent;color:var(--muted);border-color:var(--line)}
-
 .hint{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;}
-
 .themes{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
 .theme-item{width:52px;height:52px;border-radius:14px;border:2px solid var(--line);cursor:pointer;position:relative;overflow:hidden;transition:.15s;display:flex;align-items:center;justify-content:center;}
 .theme-item:active{transform:scale(.94)}
 .theme-item.on{border-color:var(--accent);box-shadow:0 0 0 3px rgba(100,140,255,.25);}
 .theme-item .dot{position:absolute;right:6px;bottom:6px;width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.4);}
-
 #bgPreview{
   width:100%;height:120px;border-radius:12px;
   border:1px dashed var(--line);
@@ -337,7 +348,6 @@ h1{
   margin-bottom:10px;overflow:hidden;position:relative;
 }
 #bgPreview img{width:100%;height:100%;object-fit:cover;}
-
 #toast{
   position:fixed;left:50%;bottom:calc(40px + env(safe-area-inset-bottom));
   transform:translate(-50%,20px);z-index:99;
@@ -347,7 +357,6 @@ h1{
   box-shadow:0 12px 32px rgba(0,0,0,.2);
 }
 #toast.show{opacity:1;transform:translate(-50%,0);}
-
 .file-input-hidden { display: none; }
 </style>
 </head>
@@ -367,7 +376,8 @@ h1{
   <div class="mode-switch">
     <button class="mode-btn on" id="modeLink" data-mode="link">📱 链接</button>
     <button class="mode-btn" id="modeApi" data-mode="api">🔑 API</button>
-    <button class="mode-btn" id="modeFile" data-mode="file">📁 备份文件</button>
+    <button class="mode-btn" id="modeFile" data-mode="file">📁 备份</button>
+    <button class="mode-btn" id="modeMaterial" data-mode="material">📚 素材</button>
   </div>
   <input id="search" type="search" placeholder="搜索…" autocomplete="off">
   <div class="scroller" id="cats"></div>
@@ -376,7 +386,7 @@ h1{
 
 <div id="list"></div>
 
-<!-- ============ 链接/API 表单 ============ -->
+<!-- 链接/API 表单 -->
 <div id="formPage">
   <div class="form-header">
     <h2 id="formTitle">添加</h2>
@@ -397,14 +407,17 @@ h1{
     </div>
     <div class="form-row link-only">
       <label>分类</label>
-      <input type="text" id="fCat" list="catList" placeholder="例如：小火箭">
-      <datalist id="catList"></datalist>
+      <div class="cat-picker" id="fCatPicker">
+        <span class="cat-current empty" id="fCatCurrent">未选择</span>
+        <span class="cat-arrow">▾</span>
+      </div>
+      <input type="hidden" id="fCat" value="">
     </div>
     <div class="form-row link-only">
       <label>图标（可选）</label>
       <input type="text" id="fIcon" placeholder="🔒 或图片链接">
     </div>
-    <div class="form-row link-only">
+    <div class="form-row">
       <label>标签（逗号分隔）</label>
       <input type="text" id="fTags" placeholder="Vercel, IPA, 教程, 无源码">
     </div>
@@ -419,20 +432,20 @@ h1{
   </div>
   <div class="form-footer">
     <button class="btn primary" id="saveBtn">保存</button>
-    <button class="btn" data-close-file-page>取消</button>
+    <button class="btn" data-close-page>取消</button>
   </div>
 </div>
 
-<!-- ============ 备份文件上传表单 ============ -->
+<!-- 文件/素材 表单 -->
 <div id="fileFormPage">
   <div class="form-header">
-    <h2>上传备份文件</h2>
+    <h2 id="fileFormTitle">上传</h2>
     <button class="tbtn" data-close-file-page>✕</button>
   </div>
   <div class="form-body">
     <div class="form-row">
-      <label>第 1 步 · 这是谁的备份？ *</label>
-      <input type="text" id="ffName" placeholder="例如：小手机A的备份、IB 桌面版备份">
+      <label>第 1 步 · 这是什么？ *</label>
+      <input type="text" id="ffName" placeholder="例如：小手机A的备份 / 星野人设卡">
     </div>
     <div class="form-row">
       <label>第 2 步 · 选择文件 *</label>
@@ -444,12 +457,19 @@ h1{
     </div>
     <div class="form-row">
       <label>分类</label>
-      <input type="text" id="ffCat" list="fileCatList" placeholder="例如：小手机 / IB / 其他">
-      <datalist id="fileCatList"></datalist>
+      <div class="cat-picker" id="ffCatPicker">
+        <span class="cat-current empty" id="ffCatCurrent">未选择</span>
+        <span class="cat-arrow">▾</span>
+      </div>
+      <input type="hidden" id="ffCat" value="">
+    </div>
+    <div class="form-row">
+      <label>标签（逗号分隔）</label>
+      <input type="text" id="ffTags" placeholder="例如：v2, 2024, 完整版">
     </div>
     <div class="form-row">
       <label>备注（可选）</label>
-      <textarea id="ffNote" placeholder="例如：这是 2024 年 1 月的完整备份，含聊天记录。"></textarea>
+      <textarea id="ffNote" placeholder="随便写点啥，方便以后找"></textarea>
     </div>
   </div>
   <div class="form-footer">
@@ -458,13 +478,21 @@ h1{
   </div>
 </div>
 
-<!-- 文件详情 -->
-<div class="sheet" id="fileDetail"><div class="box" id="fileDetailBox"></div></div>
+<!-- 分类选择面板 -->
+<div class="sheet cat-sheet" id="catSheet">
+  <div class="box">
+    <h2 id="catSheetTitle">选择分类</h2>
+    <div class="cat-grid" id="catGrid"></div>
+    <div class="actions">
+      <button class="btn primary" id="catAddBtn">+ 新分类</button>
+      <button class="btn ghost" data-close>取消</button>
+    </div>
+  </div>
+</div>
 
-<!-- 链接/API 详情 -->
+<div class="sheet" id="fileDetail"><div class="box" id="fileDetailBox"></div></div>
 <div class="sheet" id="detail"><div class="box" id="detailBox"></div></div>
 
-<!-- 主题面板 -->
 <div class="sheet" id="themeSheet">
   <div class="box">
     <h2>主题与外观</h2>
@@ -488,12 +516,11 @@ h1{
   </div>
 </div>
 
-<!-- 数据备份面板 -->
 <div class="sheet" id="backupSheet">
   <div class="box">
     <h2>备份与恢复</h2>
     <div class="actions col">
-      <button class="btn primary" id="exportBtn">导出备份（JSON）</button>
+      <button class="btn primary" id="exportBtn">导出完整备份（含文件）</button>
       <button class="btn" id="importBtn">导入备份</button>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
       <button class="btn" id="copyAllBtn">复制当前模式所有内容</button>
@@ -503,7 +530,9 @@ h1{
     <p class="hint" style="margin-top:16px">
       共 <span id="statCount">0</span> 条 · 分类 <span id="statCat">0</span> 个 · 标签 <span id="statTag">0</span> 个<br>
       数据保存在本地浏览器。换设备或清缓存前，请务必导出备份！<br>
-      <b>文件仓库</b>：共 <span id="statFiles">0</span> 个文件 · 总大小 <span id="statFilesSize">0 KB</span>
+      <b>📁 备份文件</b>：<span id="statBackupFiles">0</span> 个 · <span id="statBackupSize">0 KB</span><br>
+      <b>📚 素材库</b>：<span id="statMaterialFiles">0</span> 个 · <span id="statMaterialSize">0 KB</span><br>
+      <b>提示</b>：导出完整备份会把所有文件内容一起打包，JSON 会比较大，请耐心等待。
     </p>
   </div>
 </div>
@@ -511,7 +540,6 @@ h1{
 <div id="toast"></div>
 
 <script>
-/* ================= 主题数据 ================= */
 const THEMES = {
   glass:  { label:'毛玻璃', v:{ bg:'#e8ecf4', card:'rgba(255,255,255,.55)', card2:'rgba(255,255,255,.8)', text:'#1a2233', muted:'#6b7891', accent:'#4f8cff', accent2:'#a78bfa', line:'rgba(255,255,255,.85)', star:'#f5a524', danger:'#ef4444' } },
   dark:   { label:'深空',   v:{ bg:'#0b0f14', card:'rgba(22,28,36,.7)', card2:'#1e2630', text:'#e8eef5', muted:'#8b9aab', accent:'#38bdf8', accent2:'#a855f7', line:'rgba(255,255,255,.08)', star:'#fbbf24', danger:'#f87171' } },
@@ -520,23 +548,21 @@ const THEMES = {
   forest: { label:'森林',   v:{ bg:'#0a1310', card:'rgba(17,29,24,.7)', card2:'#182a22', text:'#e2f5ec', muted:'#84a99a', accent:'#34d399', accent2:'#22d3ee', line:'rgba(255,255,255,.1)', star:'#fbbf24', danger:'#f87171' } },
   light:  { label:'日间',   v:{ bg:'#f4f6fa', card:'rgba(255,255,255,.85)', card2:'#eef2f7', text:'#0f172a', muted:'#64748b', accent:'#0ea5e9', accent2:'#8b5CF6', line:'rgba(15,23,42,.1)', star:'#f59e0b', danger:'#ef4444' } },
 };
-
 const KEY = 'linklib_v1';
 const THEME_KEY = 'linklib_theme';
 const CSS_KEY = 'linklib_customcss';
 const VIEW_KEY = 'linklib_viewmode';
 const BG_KEY = 'linklib_custombg';
 const MODE_KEY = 'linklib_mode';
+const CATPOOL_KEY = 'linklib_catpool'; // 分类池（用户手动加过的）
 const DB_NAME = 'yuan_files_db';
 const DB_STORE = 'files';
-
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
-
 let items = [];
 let files = [];
-let curCat = 'all';          // 链接分类筛选
-let curFileCat = 'all';      // 文件分类筛选
+let curCat = 'all';
+let curFileCat = 'all';
 let curTag = null;
 let sortMode = 'new';
 let editingId = null;
@@ -544,19 +570,16 @@ let detailId = null;
 let formStar = false;
 let viewMode = localStorage.getItem(VIEW_KEY) || 'card';
 let currentMode = localStorage.getItem(MODE_KEY) || 'link';
-
-// 待上传的文件缓存
 let pendingFiles = [];
+
+// 分类选择面板状态
+let catTargetId = 'fCat';      // 当前正在编辑哪个隐藏 input
+let catTargetKind = 'link';    // 分类池类型
+let catOnPicked = null;        // 选中后的回调
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
-
-function normalizeUrl(u){
-  u = (u || '').trim();
-  if(!u) return '';
-  if(!/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(u)) u = 'https://' + u;
-  return u;
-}
+function normalizeUrl(u){ u = (u || '').trim(); if(!u) return ''; if(!/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(u)) u = 'https://' + u; return u; }
 function formatSize(bytes){
   if(!bytes) return '0 B';
   if(bytes < 1024) return bytes + ' B';
@@ -565,16 +588,13 @@ function formatSize(bytes){
   return (bytes / 1024 / 1024 / 1024).toFixed(2) + ' GB';
 }
 function formatTime(ts){
-  const d = new Date(ts);
-  const pad = n => String(n).padStart(2, '0');
+  const d = new Date(ts); const pad = n => String(n).padStart(2, '0');
   return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 let toastTimer;
 function toast(msg){
-  const t = $('#toast');
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
 }
 async function copyText(t){
   try{ await navigator.clipboard.writeText(t); toast('已复制'); }
@@ -582,25 +602,132 @@ async function copyText(t){
     const ta = document.createElement('textarea');
     ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
     document.body.appendChild(ta); ta.select();
-    try{ document.execCommand('copy'); toast('已复制'); }
-    catch(_){ toast('复制失败'); }
+    try{ document.execCommand('copy'); toast('已复制'); }catch(_){ toast('复制失败'); }
     ta.remove();
   }
 }
 function closeAll(){ $$('.sheet').forEach(s => s.classList.remove('show')); }
 function closeForm(){ $('#formPage').classList.remove('show'); }
 function closeFileForm(){ $('#fileFormPage').classList.remove('show'); }
+function closeCatSheet(){ $('#catSheet').classList.remove('show'); }
 function parseTags(s){ return String(s || '').split(/[,，\s]+/).map(x => x.trim()).filter(Boolean); }
+function isImageType(type, name){
+  if(type && type.startsWith('image/')) return true;
+  const ext = (name || '').toLowerCase().split('.').pop();
+  return ['png','jpg','jpeg','gif','webp','bmp','svg'].includes(ext);
+}
 
-/* ================= IndexedDB ================= */
+/* ========== 分类池 ========== */
+function loadCatPool(){
+  try{ return JSON.parse(localStorage.getItem(CATPOOL_KEY) || '{}'); }
+  catch(e){ return {}; }
+}
+function saveCatPool(pool){
+  try{ localStorage.setItem(CATPOOL_KEY, JSON.stringify(pool)); }catch(e){}
+}
+function getCatPool(kind){
+  const set = new Set();
+  // 从实际数据里提取
+  if(kind === 'link'){
+    items.filter(i => i.type !== 'api').forEach(i => {
+      const c = (i.cat || '').trim(); if(c) set.add(c);
+    });
+  } else {
+    files.filter(f => f.kind === kind).forEach(f => {
+      const c = (f.cat || '').trim(); if(c) set.add(c);
+    });
+  }
+  // 从手动加的分类池里提取
+  const pool = loadCatPool();
+  (pool[kind] || []).forEach(c => { if(c) set.add(c); });
+  return [...set].sort((a, b) => a.localeCompare(b, 'zh'));
+}
+function addCatToPool(kind, cat){
+  cat = (cat || '').trim();
+  if(!cat) return;
+  const pool = loadCatPool();
+  if(!pool[kind]) pool[kind] = [];
+  if(!pool[kind].includes(cat)) pool[kind].push(cat);
+  saveCatPool(pool);
+}
+
+/* ========== 分类选择面板 ========== */
+function openCatSheet(targetId, kind, onPicked){
+  catTargetId = targetId;
+  catTargetKind = kind;
+  catOnPicked = onPicked || null;
+  const titles = { link: '选择链接分类', backup: '选择备份分类', material: '选择素材分类' };
+  $('#catSheetTitle').textContent = titles[kind] || '选择分类';
+  renderCatGrid();
+  $('#catSheet').classList.add('show');
+}
+function renderCatGrid(){
+  const cats = getCatPool(catTargetKind);
+  const current = $('#' + catTargetId).value;
+  let html = '';
+  if(!cats.length){
+    html = '<div style="color:var(--muted);text-align:center;padding:24px 10px;font-size:13px;grid-column:1/-1">还没有分类<br>点下面「+ 新分类」加一个</div>';
+  } else {
+    html = cats.map(c => `
+      <div class="cat-cell ${c === current ? 'on' : ''}" data-cat="${esc(c)}">${esc(c)}</div>
+    `).join('');
+  }
+  html += '<div class="cat-cell cat-clear" data-cat="">✕ 清除</div>';
+  $('#catGrid').innerHTML = html;
+}
+function updateCatDisplay(targetId){
+  const val = $('#' + targetId).value.trim();
+  const displayId = targetId === 'fCat' ? 'fCatCurrent' : 'ffCatCurrent';
+  const el = $('#' + displayId);
+  if(!el) return;
+  if(val){ el.textContent = val; el.classList.remove('empty'); }
+  else { el.textContent = '未选择'; el.classList.add('empty'); }
+}
+$('#catGrid').addEventListener('click', e => {
+  const cell = e.target.closest('.cat-cell');
+  if(!cell) return;
+  const val = cell.dataset.cat || '';
+  $('#' + catTargetId).value = val;
+  updateCatDisplay(catTargetId);
+  if(catOnPicked) catOnPicked(val);
+  closeCatSheet();
+});
+$('#catAddBtn').addEventListener('click', () => {
+  const newCat = prompt('输入新分类名称：');
+  if(newCat === null) return;
+  const c = newCat.trim();
+  if(!c) return;
+  addCatToPool(catTargetKind, c);
+  $('#' + catTargetId).value = c;
+  updateCatDisplay(catTargetId);
+  if(catOnPicked) catOnPicked(c);
+  closeCatSheet();
+  toast('已添加分类：' + c);
+});
+
+/* ========== Base64 ========== */
+function blobToBase64(blob){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => { const dataUrl = reader.result; const idx = dataUrl.indexOf(','); resolve(idx >= 0 ? dataUrl.slice(idx + 1) : dataUrl); };
+    reader.onerror = e => reject(e);
+    reader.readAsDataURL(blob);
+  });
+}
+function base64ToBlob(base64, type){
+  const bin = atob(base64); const len = bin.length;
+  const bytes = new Uint8Array(len);
+  for(let i = 0; i < len; i++) bytes[i] = bin.charCodeAt(i);
+  return new Blob([bytes], { type: type || 'application/octet-stream' });
+}
+
+/* ========== IndexedDB ========== */
 function openDB(){
   return new Promise((resolve, reject) => {
     const req = indexedDB.open(DB_NAME, 1);
     req.onupgradeneeded = e => {
       const db = e.target.result;
-      if(!db.objectStoreNames.contains(DB_STORE)){
-        db.createObjectStore(DB_STORE, { keyPath: 'id' });
-      }
+      if(!db.objectStoreNames.contains(DB_STORE)){ db.createObjectStore(DB_STORE, { keyPath: 'id' }); }
     };
     req.onsuccess = e => resolve(e.target.result);
     req.onerror = e => reject(e.target.error);
@@ -648,12 +775,7 @@ async function dbUpdateFile(id, patch){
     const tx = db.transaction(DB_STORE, 'readwrite');
     const store = tx.objectStore(DB_STORE);
     const req = store.get(id);
-    req.onsuccess = () => {
-      const rec = req.result;
-      if(!rec) return;
-      Object.assign(rec, patch);
-      store.put(rec);
-    };
+    req.onsuccess = () => { const rec = req.result; if(!rec) return; Object.assign(rec, patch); store.put(rec); };
     tx.oncomplete = () => resolve();
     tx.onerror = e => reject(e.target.error);
   });
@@ -662,30 +784,30 @@ async function loadFiles(){
   const all = await dbGetAllFiles();
   files = all.map(f => ({
     id: f.id, name: f.name, size: f.size, type: f.type,
-    cat: f.cat || '', note: f.note || '', createdAt: f.createdAt
+    kind: f.kind || 'backup',
+    cat: f.cat || '', tags: f.tags || [], note: f.note || '', createdAt: f.createdAt
   }));
   files.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 }
 
-/* ================= 模式 ================= */
+/* ========== 模式 ========== */
 function setMode(mode){
   currentMode = mode;
   localStorage.setItem(MODE_KEY, mode);
   $('#modeLink').classList.toggle('on', mode === 'link');
   $('#modeApi').classList.toggle('on', mode === 'api');
   $('#modeFile').classList.toggle('on', mode === 'file');
-
+  $('#modeMaterial').classList.toggle('on', mode === 'material');
   $('#search').placeholder = mode === 'link' ? '搜索名称、网址、备注、标签…'
     : mode === 'api' ? '搜索名称、URL、密钥…'
-    : '搜索备份名、分类、备注…';
-
+    : mode === 'file' ? '搜索备份名、分类、备注…'
+    : '搜索素材名、分类、备注…';
   $$('.link-only').forEach(el => el.style.display = mode === 'link' ? 'flex' : 'none');
   $('#apiSecretRow').style.display = mode === 'api' ? 'flex' : 'none';
-
   renderAll();
 }
 
-/* ================= 主题 ================= */
+/* ========== 主题 ========== */
 function applyTheme(themeKey){
   const t = THEMES[themeKey] || THEMES.glass;
   document.documentElement.setAttribute('data-theme', themeKey);
@@ -746,18 +868,19 @@ function compressImage(file, callback){
   reader.readAsDataURL(file);
 }
 
-/* ================= 数据（链接/API） ================= */
+/* ========== 数据 ========== */
 function load(){ try{ const a = JSON.parse(localStorage.getItem(KEY) || '[]'); items = Array.isArray(a) ? a : []; }catch(e){ items = []; } }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(items)); }catch(e){ toast('保存失败'); } }
 function allCats(){ const m = new Map(); items.filter(i => i.type !== 'api').forEach(it => { const c = (it.cat || '').trim(); if(!c) return; m.set(c, (m.get(c) || 0) + 1); }); return [...m.entries()].sort((a, b) => b[1] - a[1]); }
-function allTags(){ const m = new Map(); items.filter(i => i.type !== 'api').forEach(it => (it.tags || []).forEach(t => { m.set(t, (m.get(t) || 0) + 1); })); return [...m.entries()].sort((a, b) => b[1] - a[1]); }
-function allFileCats(){
+function allTags(){ const m = new Map(); items.forEach(it => (it.tags || []).forEach(t => { m.set(t, (m.get(t) || 0) + 1); })); return [...m.entries()].sort((a, b) => b[1] - a[1]); }
+function allFileCats(kind){
   const m = new Map();
-  files.forEach(f => {
-    const c = (f.cat || '').trim();
-    if(!c) return;
-    m.set(c, (m.get(c) || 0) + 1);
-  });
+  files.filter(f => f.kind === kind).forEach(f => { const c = (f.cat || '').trim(); if(!c) return; m.set(c, (m.get(c) || 0) + 1); });
+  return [...m.entries()].sort((a, b) => b[1] - a[1]);
+}
+function allFileTags(kind){
+  const m = new Map();
+  files.filter(f => f.kind === kind).forEach(f => (f.tags || []).forEach(t => { m.set(t, (m.get(t) || 0) + 1); }));
   return [...m.entries()].sort((a, b) => b[1] - a[1]);
 }
 
@@ -785,14 +908,15 @@ function visibleItems(){
   if(currentMode === 'link') list.sort((a, b) => (b.star ? 1 : 0) - (a.star ? 1 : 0));
   return list;
 }
-function visibleFiles(){
+function visibleFiles(kind){
   const q = $('#search').value.trim().toLowerCase();
   let list = files.filter(f => {
+    if(f.kind !== kind) return false;
     if(curFileCat === 'none' && (f.cat || '').trim()) return false;
     if(curFileCat !== 'all' && curFileCat !== 'none' && (f.cat || '').trim() !== curFileCat) return false;
+    if(curTag && !(f.tags || []).includes(curTag)) return false;
     if(!q) return true;
-    const hay = [f.name, f.note, f.cat].join(' ').toLowerCase();
-    return hay.includes(q);
+    return [f.name, f.note, f.cat, (f.tags || []).join(' ')].join(' ').toLowerCase().includes(q);
   });
   if(sortMode === 'name') list.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'zh'));
   else if(sortMode === 'updated') list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
@@ -800,7 +924,7 @@ function visibleFiles(){
   return list;
 }
 
-/* ================= 渲染 ================= */
+/* ========== 渲染 ========== */
 function iconHTML(it){
   const ic = (it.icon || '').trim();
   if(/^(https?:\/\/|data:image)/i.test(ic)) return `<img src="${esc(ic)}" alt="" onerror="this.remove()">`;
@@ -809,26 +933,29 @@ function iconHTML(it){
   return esc(n || '?');
 }
 function renderCats(){
-  if(currentMode === 'api'){
-    $('#cats').style.display = 'none';
-    $('#tagBar').style.display = 'none';
-    return;
-  }
-  if(currentMode === 'file'){
-    $('#tagBar').style.display = 'none';
+  if(currentMode === 'api'){ $('#cats').style.display = 'none'; $('#tagBar').style.display = 'none'; return; }
+  if(currentMode === 'file' || currentMode === 'material'){
     $('#cats').style.display = 'flex';
-    const cats = allFileCats();
-    const noneN = files.filter(f => !(f.cat || '').trim()).length;
-    const list = [['all', '全部', files.length], ...cats.map(([c, n]) => [c, c, n]), ['none', '未分类', noneN]];
+    const kind = currentMode === 'file' ? 'backup' : 'material';
+    const kindFiles = files.filter(f => f.kind === kind);
+    const cats = allFileCats(kind);
+    const noneN = kindFiles.filter(f => !(f.cat || '').trim()).length;
+    const list = [['all', '全部', kindFiles.length], ...cats.map(([c, n]) => [c, c, n]), ['none', '未分类', noneN]];
     $('#cats').innerHTML = list.map(([k, label, n]) => `
       <button class="chip ${curFileCat === k ? 'on' : ''}" data-file-cat="${esc(k)}">
         ${esc(label)}<span class="n">${n}</span>
       </button>`).join('');
-    const dl = $('#fileCatList');
-    if(dl) dl.innerHTML = cats.map(([c]) => `<option value="${esc(c)}">`).join('');
+    const tags = allFileTags(kind);
+    if(!tags.length){ $('#tagBar').style.display = 'none'; $('#tagBar').innerHTML = ''; }
+    else {
+      $('#tagBar').style.display = 'flex';
+      $('#tagBar').innerHTML = tags.map(([t, n]) => `
+        <button class="chip ${curTag === t ? 'on' : ''}" data-tag="${esc(t)}">
+          #${esc(t)}<span class="n">${n}</span>
+        </button>`).join('');
+    }
     return;
   }
-  // link 模式
   $('#cats').style.display = 'flex'; $('#tagBar').style.display = 'flex';
   const cats = allCats();
   const starN = items.filter(x => x.type !== 'api' && x.star).length;
@@ -838,36 +965,43 @@ function renderCats(){
     <button class="chip ${curCat === k ? 'on' : ''}" data-cat="${esc(k)}">
       ${esc(label)}<span class="n">${n}</span>
     </button>`).join('');
-  const dl = $('#catList');
-  if(dl) dl.innerHTML = cats.map(([c]) => `<option value="${esc(c)}">`).join('');
-}
-function renderTags(){
-  if(currentMode !== 'link') return;
   const tags = allTags();
-  if(!tags.length){ $('#tagBar').innerHTML = ''; return; }
-  $('#tagBar').innerHTML = tags.map(([t, n]) => `
-    <button class="chip ${curTag === t ? 'on' : ''}" data-tag="${esc(t)}">
-      #${esc(t)}<span class="n">${n}</span>
-    </button>`).join('');
+  if(!tags.length){ $('#tagBar').innerHTML = ''; }
+  else {
+    $('#tagBar').innerHTML = tags.map(([t, n]) => `
+      <button class="chip ${curTag === t ? 'on' : ''}" data-tag="${esc(t)}">
+        #${esc(t)}<span class="n">${n}</span>
+      </button>`).join('');
+  }
 }
+
 function renderList(){
   const grid = $('#list');
-  if(currentMode === 'file'){
+  if(currentMode === 'file' || currentMode === 'material'){
     grid.className = 'file-mode';
     $('#viewToggleBtn').style.display = 'none';
-    const list = visibleFiles();
+    const kind = currentMode === 'file' ? 'backup' : 'material';
+    const list = visibleFiles(kind);
+    const emptyTip = currentMode === 'file'
+      ? '还没有备份文件<br>点右上角 + 上传第一个'
+      : '还没有素材<br>点右上角 + 上传世界书 / 表情包 / 人设卡';
     if(!list.length){
-      grid.innerHTML = `<div class="empty">${files.length ? '没有匹配的文件' : '还没有备份文件<br>点右上角 + 上传第一个'}</div>`;
+      grid.innerHTML = `<div class="empty">${files.filter(f => f.kind === kind).length ? '没有匹配的结果' : emptyTip}</div>`;
       return;
     }
-    grid.innerHTML = list.map(f => `
+    grid.innerHTML = list.map(f => {
+      const showThumb = currentMode === 'material' && isImageType(f.type, f.name);
+      const tags = (f.tags || []).slice(0, 3).map(t => `<span class="tag">#${esc(t)}</span>`).join('');
+      return `
       <div class="item file-item" data-id="${esc(f.id)}">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
-          <div class="file-name">📄 ${esc(f.name)}</div>
+          <div class="file-name">${currentMode === 'material' ? '📚' : '📄'} ${esc(f.name)}</div>
           <button class="more-btn" style="position:static;" data-more="${esc(f.id)}">⋯</button>
         </div>
+        ${showThumb ? `<img class="file-thumb" data-thumb="${esc(f.id)}" alt="">` : ''}
         <div class="file-meta">
           ${f.cat ? `<span class="file-cat-badge">${esc(f.cat)}</span>` : ''}
+          ${tags}
           <span>📦 ${esc(formatSize(f.size))}</span>
           <span>🕐 ${esc(formatTime(f.createdAt))}</span>
         </div>
@@ -876,15 +1010,14 @@ function renderList(){
           <button class="act-btn" data-download="${esc(f.id)}">下载</button>
           <button class="act-btn" data-copy-name="${esc(f.name)}">复制文件名</button>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
+    setTimeout(loadThumbnails, 50);
     return;
   }
-
   const list = visibleItems();
-  if(currentMode === 'api'){
-    grid.className = 'api-mode';
-    $('#viewToggleBtn').style.display = 'none';
-  } else {
+  if(currentMode === 'api'){ grid.className = 'api-mode'; $('#viewToggleBtn').style.display = 'none'; }
+  else {
     grid.className = viewMode === 'icon' ? 'icon-mode' : '';
     $('#viewToggleBtn').style.display = 'flex';
     $('#viewToggleBtn').textContent = viewMode === 'icon' ? '🔳' : '🔲';
@@ -896,6 +1029,7 @@ function renderList(){
   if(currentMode === 'api'){
     grid.innerHTML = list.map(it => {
       const maskedKey = it.secret ? '••••••••••••••••' : '（无密钥）';
+      const tags = (it.tags || []).slice(0, 3).map(t => `<span class="tag">#${esc(t)}</span>`).join('');
       return `
         <div class="item api-item" data-id="${esc(it.id)}">
           <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -912,6 +1046,8 @@ function renderList(){
             <span class="api-text masked">${maskedKey}</span>
             <button class="copy-btn" data-copy-secret="${esc(it.secret)}">复制</button>
           </div>
+          ${tags ? `<div class="meta">${tags}</div>` : ''}
+          ${it.note ? `<div class="note">${esc(it.note)}</div>` : ''}
         </div>`;
     }).join('');
   } else {
@@ -919,10 +1055,7 @@ function renderList(){
       if(viewMode === 'icon'){
         return `
           <div class="item" data-id="${esc(it.id)}">
-            <div class="row1">
-              <span class="ic">${iconHTML(it)}</span>
-              <span class="nm">${esc(it.name || '未命名')}</span>
-            </div>
+            <div class="row1"><span class="ic">${iconHTML(it)}</span><span class="nm">${esc(it.name || '未命名')}</span></div>
             <button class="more-btn" data-more="${esc(it.id)}">⋯</button>
           </div>`;
       }else{
@@ -941,21 +1074,36 @@ function renderList(){
     }).join('');
   }
 }
+async function loadThumbnails(){
+  const thumbs = document.querySelectorAll('[data-thumb]');
+  for(const el of thumbs){
+    const id = el.dataset.thumb;
+    const rec = await dbGetFile(id);
+    if(rec && rec.data && rec.data instanceof Blob){
+      const url = URL.createObjectURL(rec.data);
+      el.src = url;
+      el.onload = () => setTimeout(() => URL.revokeObjectURL(url), 3000);
+    }
+  }
+}
 function renderAll(){
-  renderCats(); renderTags(); renderList();
+  renderCats(); renderList();
   $('#statCount').textContent = items.length;
   $('#statCat').textContent = allCats().length;
   $('#statTag').textContent = allTags().length;
-  $('#statFiles').textContent = files.length;
-  const total = files.reduce((s, f) => s + (f.size || 0), 0);
-  $('#statFilesSize').textContent = formatSize(total);
+  const backups = files.filter(f => f.kind === 'backup');
+  const materials = files.filter(f => f.kind === 'material');
+  $('#statBackupFiles').textContent = backups.length;
+  $('#statBackupSize').textContent = formatSize(backups.reduce((s, f) => s + (f.size || 0), 0));
+  $('#statMaterialFiles').textContent = materials.length;
+  $('#statMaterialSize').textContent = formatSize(materials.reduce((s, f) => s + (f.size || 0), 0));
 }
 function fieldHTML(k, v, mono){
   if(!v) return '';
   return `<div class="field"><div class="k">${esc(k)}</div><div class="v ${mono ? 'mono' : ''}">${esc(v)}</div></div>`;
 }
 
-/* ================= 详情 ================= */
+/* ========== 详情 ========== */
 function openDetail(id){
   const it = items.find(x => x.id === id);
   if(!it) return;
@@ -970,7 +1118,7 @@ function openDetail(id){
     </div>
     ${isApi ? fieldHTML('密钥 / Key', it.secret || '（无）', true) : ''}
     ${!isApi ? fieldHTML('分类', it.cat) : ''}
-    ${!isApi ? fieldHTML('标签', tags) : ''}
+    ${fieldHTML('标签', tags)}
     ${fieldHTML('备注 / 用法', it.note)}
     <div class="actions">
       ${url ? `<button class="btn primary" data-act="open">打开</button>` : ''}
@@ -985,16 +1133,29 @@ function openDetail(id){
     <div class="actions"><button class="btn ghost" data-close>关闭</button></div>`;
   $('#detail').classList.add('show');
 }
-function openFileDetail(id){
+async function openFileDetail(id){
   const f = files.find(x => x.id === id);
   if(!f) return;
   detailId = id;
+  const isMaterial = f.kind === 'material';
+  const showThumb = isMaterial && isImageType(f.type, f.name);
+  let thumbHTML = '';
+  if(showThumb){
+    const rec = await dbGetFile(id);
+    if(rec && rec.data){
+      const url = URL.createObjectURL(rec.data);
+      thumbHTML = `<div style="text-align:center;margin-bottom:14px"><img src="${url}" style="max-width:100%;max-height:320px;border-radius:12px" onload="setTimeout(()=>URL.revokeObjectURL('${url}'),5000)"></div>`;
+    }
+  }
+  const tags = (f.tags || []).map(t => `#${t}`).join('  ');
   $('#fileDetailBox').innerHTML = `
     <div class="dhead">
-      <div class="ic">📄</div>
+      <div class="ic">${isMaterial ? '📚' : '📄'}</div>
       <div style="min-width:0"><div class="nm">${esc(f.name)}</div><div class="u">${esc(formatSize(f.size))}</div></div>
     </div>
+    ${thumbHTML}
     ${fieldHTML('分类', f.cat)}
+    ${fieldHTML('标签', tags)}
     ${fieldHTML('上传时间', formatTime(f.createdAt))}
     ${fieldHTML('备注', f.note)}
     <div class="actions">
@@ -1003,16 +1164,17 @@ function openFileDetail(id){
     </div>
     <div class="actions">
       <button class="btn" data-file-act="edit-cat">改分类</button>
-      <button class="btn" data-file-act="edit-note">编辑备注</button>
+      <button class="btn" data-file-act="edit-tags">改标签</button>
     </div>
     <div class="actions">
+      <button class="btn" data-file-act="edit-note">编辑备注</button>
       <button class="btn danger" data-file-act="del">删除</button>
-      <button class="btn ghost" data-close>关闭</button>
-    </div>`;
+    </div>
+    <div class="actions"><button class="btn ghost" data-close>关闭</button></div>`;
   $('#fileDetail').classList.add('show');
 }
 
-/* ================= 链接/API 表单 ================= */
+/* ========== 表单 ========== */
 function setStar(v){ formStar = v; const el = $('#starToggle'); el.classList.toggle('on', v); el.querySelector('.s').textContent = v ? '★' : '☆'; el.querySelector('.s').style.color = v ? 'var(--star)' : 'var(--muted)'; }
 function openForm(id){
   editingId = id || null;
@@ -1023,6 +1185,7 @@ function openForm(id){
   $('#fUrl').value = it?.url || '';
   $('#fSecret').value = it?.secret || '';
   $('#fCat').value = it?.cat || '';
+  updateCatDisplay('fCat');
   $('#fIcon').value = it?.icon || '';
   $('#fTags').value = (it?.tags || []).join(', ');
   $('#fNote').value = it?.note || '';
@@ -1032,12 +1195,16 @@ function openForm(id){
   $('#formPage').classList.add('show');
   setTimeout(() => $('#fName').focus(), 80);
 }
-
-/* ================= 备份文件表单 ================= */
 function openFileForm(){
   pendingFiles = [];
+  const isMaterial = currentMode === 'material';
+  $('#fileFormTitle').textContent = isMaterial ? '上传素材' : '上传备份文件';
+  $('#ffName').placeholder = isMaterial ? '例如：星野人设卡 / 表情包合集' : '例如：小手机A的备份、IB 桌面版备份';
+  $('#ffNote').placeholder = isMaterial ? '随便写点啥，方便以后找' : '例如：这是 2024 年 1 月的完整备份';
   $('#ffName').value = '';
   $('#ffCat').value = '';
+  updateCatDisplay('ffCat');
+  $('#ffTags').value = '';
   $('#ffNote').value = '';
   $('#filePickerTip').textContent = '点击选择文件（可多选）';
   $('#filePickerFiles').textContent = '';
@@ -1048,34 +1215,27 @@ function openFileForm(){
 async function handleFileSave(){
   const name = $('#ffName').value.trim();
   const cat = $('#ffCat').value.trim();
+  const tags = parseTags($('#ffTags').value);
   const note = $('#ffNote').value.trim();
-
-  if(!name){ toast('请填写“这是谁的备份”'); return; }
+  const kind = currentMode === 'material' ? 'material' : 'backup';
+  if(!name){ toast('请填写“这是什么”'); return; }
   if(!pendingFiles.length){ toast('请选择要上传的文件'); return; }
-
   let n = 0;
   for(const f of pendingFiles){
     const id = uid();
     try{
       await dbPutFile({
-        id,
+        id, kind,
         name: name + (pendingFiles.length > 1 ? ' - ' + f.name : ''),
-        size: f.size,
-        type: f.type || '',
-        cat, note,
-        data: f,
-        createdAt: Date.now()
+        size: f.size, type: f.type || '',
+        cat, tags, note, data: f, createdAt: Date.now()
       });
       n++;
     }catch(e){ toast('上传失败：' + f.name); }
   }
-  await loadFiles();
-  renderAll();
-  closeFileForm();
+  await loadFiles(); renderAll(); closeFileForm();
   toast('已上传 ' + n + ' 个文件');
 }
-
-/* ================= 下载 ================= */
 async function downloadFile(id){
   const rec = await dbGetFile(id);
   if(!rec || !rec.data){ toast('文件不存在'); return; }
@@ -1087,7 +1247,7 @@ async function downloadFile(id){
   toast('开始下载：' + rec.name);
 }
 
-/* ================= 事件绑定 ================= */
+/* ========== 事件 ========== */
 $('#cats').addEventListener('click', e => {
   const fileCat = e.target.closest('[data-file-cat]');
   if(fileCat){ curFileCat = fileCat.dataset.fileCat; renderAll(); return; }
@@ -1108,14 +1268,14 @@ $('#list').addEventListener('click', async e => {
   const moreBtn = e.target.closest('[data-more]');
   if(moreBtn){
     e.stopPropagation();
-    if(currentMode === 'file') openFileDetail(moreBtn.dataset.more);
+    if(currentMode === 'file' || currentMode === 'material') openFileDetail(moreBtn.dataset.more);
     else openDetail(moreBtn.dataset.more);
     return;
   }
   const item = e.target.closest('.item');
   if(item){
     const id = item.dataset.id;
-    if(currentMode === 'file'){ openFileDetail(id); return; }
+    if(currentMode === 'file' || currentMode === 'material'){ openFileDetail(id); return; }
     if(currentMode === 'api'){ openDetail(id); return; }
     const it = items.find(x => x.id === id);
     if(!it) return;
@@ -1124,14 +1284,11 @@ $('#list').addEventListener('click', async e => {
     else { openDetail(id); }
   }
 });
-
 $('#search').addEventListener('input', renderList);
-
 $('#addBtn').addEventListener('click', () => {
-  if(currentMode === 'file') openFileForm();
+  if(currentMode === 'file' || currentMode === 'material') openFileForm();
   else openForm(null);
 });
-
 $('#sortBtn').addEventListener('click', () => {
   sortMode = sortMode === 'new' ? 'name' : sortMode === 'name' ? 'updated' : 'new';
   toast('排序：' + (sortMode === 'new' ? '最新' : sortMode === 'name' ? '按名称' : '最近修改'));
@@ -1139,19 +1296,16 @@ $('#sortBtn').addEventListener('click', () => {
 });
 $('#themeBtn').addEventListener('click', () => $('#themeSheet').classList.add('show'));
 $('#backupBtn').addEventListener('click', () => $('#backupSheet').classList.add('show'));
-
 $('#modeLink').addEventListener('click', () => setMode('link'));
 $('#modeApi').addEventListener('click', () => setMode('api'));
 $('#modeFile').addEventListener('click', () => setMode('file'));
-
+$('#modeMaterial').addEventListener('click', () => setMode('material'));
 $('#viewToggleBtn').addEventListener('click', () => {
   viewMode = viewMode === 'card' ? 'icon' : 'card';
   localStorage.setItem(VIEW_KEY, viewMode);
   renderList();
   toast('已切换：' + (viewMode === 'card' ? '卡片模式' : '图标模式'));
 });
-
-/* 链接/API 表单 */
 $('#starToggle').addEventListener('click', () => setStar(!formStar));
 $('#saveBtn').addEventListener('click', () => {
   const name = $('#fName').value.trim(); const url = $('#fUrl').value.trim();
@@ -1163,7 +1317,7 @@ $('#saveBtn').addEventListener('click', () => {
     secret: isApi ? $('#fSecret').value.trim() : '',
     cat: isApi ? '' : $('#fCat').value.trim(),
     icon: isApi ? '🔑' : $('#fIcon').value.trim(),
-    tags: isApi ? [] : parseTags($('#fTags').value),
+    tags: parseTags($('#fTags').value),
     note: $('#fNote').value.trim(),
     star: isApi ? false : formStar,
     updatedAt: Date.now()
@@ -1173,7 +1327,14 @@ $('#saveBtn').addEventListener('click', () => {
   save(); renderAll(); closeForm(); toast(editingId ? '已保存' : '已添加');
 });
 
-/* 备份文件表单 */
+// 分类选择器点击
+$('#fCatPicker').addEventListener('click', () => {
+  openCatSheet('fCat', 'link');
+});
+$('#ffCatPicker').addEventListener('click', () => {
+  openCatSheet('ffCat', currentMode === 'material' ? 'material' : 'backup');
+});
+
 $('#filePicker').addEventListener('click', () => $('#filePickerInput').click());
 $('#filePickerInput').addEventListener('change', e => {
   pendingFiles = Array.from(e.target.files || []);
@@ -1189,12 +1350,10 @@ $('#filePickerInput').addEventListener('change', e => {
 });
 $('#fileSaveBtn').addEventListener('click', handleFileSave);
 
-/* 关闭 */
 document.addEventListener('click', async e => {
   if(e.target.closest('[data-close-page]')){ closeForm(); return; }
   if(e.target.closest('[data-close-file-page]')){ closeFileForm(); return; }
   if(e.target.closest('[data-close]')){ closeAll(); return; }
-
   const a = e.target.closest('[data-act]');
   if(a){
     const act = a.getAttribute('data-act'); const it = items.find(x => x.id === detailId); if(!it) return;
@@ -1205,7 +1364,6 @@ document.addEventListener('click', async e => {
     else if(act === 'edit'){ closeAll(); openForm(detailId); }
     else if(act === 'del'){ if(confirm('确定删除？')){ items = items.filter(x => x.id !== detailId); save(); renderAll(); closeAll(); toast('已删除'); } }
   }
-
   const fa = e.target.closest('[data-file-act]');
   if(fa){
     const act = fa.getAttribute('data-file-act');
@@ -1214,37 +1372,41 @@ document.addEventListener('click', async e => {
     if(act === 'download'){ await downloadFile(detailId); }
     else if(act === 'rename'){
       const newName = prompt('重命名文件：', rec.name);
-      if(newName && newName.trim()){
-        await dbUpdateFile(detailId, { name: newName.trim() });
-        await loadFiles(); renderAll(); closeAll(); toast('已重命名');
-      }
+      if(newName && newName.trim()){ await dbUpdateFile(detailId, { name: newName.trim() }); await loadFiles(); renderAll(); closeAll(); toast('已重命名'); }
     }
     else if(act === 'edit-cat'){
-      const newCat = prompt('修改分类：', rec.cat || '');
-      if(newCat !== null){
-        await dbUpdateFile(detailId, { cat: newCat.trim() });
-        await loadFiles(); renderAll(); closeAll(); toast('分类已改');
+      // 改用分类选择器
+      const kind = rec.kind === 'material' ? 'material' : 'backup';
+      closeAll();
+      openCatSheet('__temp__', kind, async (val) => {
+        await dbUpdateFile(detailId, { cat: val });
+        await loadFiles(); renderAll(); toast('分类已改');
+      });
+      // 特殊处理：这个隐藏 input 不存在，临时创建一个
+      if(!$('#__temp__')){
+        const tmp = document.createElement('input');
+        tmp.type = 'hidden'; tmp.id = '__temp__'; tmp.value = rec.cat || '';
+        document.body.appendChild(tmp);
+      } else {
+        $('#__temp__').value = rec.cat || '';
       }
+    }
+    else if(act === 'edit-tags'){
+      const newTags = prompt('修改标签（逗号分隔）：', (rec.tags || []).join(', '));
+      if(newTags !== null){ await dbUpdateFile(detailId, { tags: parseTags(newTags) }); await loadFiles(); renderAll(); closeAll(); toast('标签已改'); }
     }
     else if(act === 'edit-note'){
       const note = prompt('编辑备注：', rec.note || '');
-      if(note !== null){
-        await dbUpdateFile(detailId, { note: note.trim() });
-        await loadFiles(); renderAll(); closeAll(); toast('备注已保存');
-      }
+      if(note !== null){ await dbUpdateFile(detailId, { note: note.trim() }); await loadFiles(); renderAll(); closeAll(); toast('备注已保存'); }
     }
     else if(act === 'del'){
-      if(confirm('确定删除这个文件？')){
-        await dbDeleteFile(detailId);
-        await loadFiles(); renderAll(); closeAll(); toast('已删除');
-      }
+      if(confirm('确定删除这个文件？')){ await dbDeleteFile(detailId); await loadFiles(); renderAll(); closeAll(); toast('已删除'); }
     }
   }
 });
 $$('.sheet').forEach(s => { s.addEventListener('click', e => { if(e.target === s) s.classList.remove('show'); }); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeAll(); closeForm(); closeFileForm(); } });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeAll(); closeForm(); closeFileForm(); closeCatSheet(); } });
 
-/* 主题/背景/CSS */
 $('#bgPreview').addEventListener('click', () => $('#bgUpload').click());
 $('#bgUpload').addEventListener('change', e => {
   const f = e.target.files[0]; if(!f) return;
@@ -1257,26 +1419,46 @@ $('#customCss').addEventListener('input', e => { applyCustomCss(e.target.value);
 $('#cssReset').addEventListener('click', () => { $('#customCss').value = ''; applyCustomCss(''); toast('已清空 CSS'); });
 $('#cssCopy').addEventListener('click', () => { copyText($('#customCss').value || ''); });
 
-/* 数据备份 */
-$('#exportBtn').addEventListener('click', () => {
+$('#exportBtn').addEventListener('click', async () => {
+  toast('正在打包，请稍等…');
+  const filesWithData = [];
+  for(const f of files){
+    const rec = await dbGetFile(f.id);
+    if(rec && rec.data){
+      try{
+        const b64 = await blobToBase64(rec.data);
+        filesWithData.push({
+          kind: rec.kind || 'backup',
+          name: rec.name, size: rec.size, type: rec.type || '',
+          cat: rec.cat || '', tags: rec.tags || [], note: rec.note || '',
+          createdAt: rec.createdAt, dataBase64: b64
+        });
+      }catch(e){ /* skip */ }
+    }
+  }
   const backup = {
-    version: 1, exportedAt: new Date().toISOString(),
+    version: 3, exportedAt: new Date().toISOString(),
     theme: localStorage.getItem(THEME_KEY) || 'glass',
     viewMode, currentMode,
     customCss: localStorage.getItem(CSS_KEY) || '',
     customBg: localStorage.getItem(BG_KEY) || '',
+    catPool: loadCatPool(),
     items,
-    filesMeta: files.map(f => ({ name: f.name, size: f.size, cat: f.cat, note: f.note, createdAt: f.createdAt }))
+    files: filesWithData
   };
-  const blob = new Blob([JSON.stringify(backup, null, 2)], { type:'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = '缘备份-' + new Date().toISOString().slice(0,10) + '.json';
-  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1500);
-  toast('已导出');
+  const blob = new Blob([JSON.stringify(backup)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '缘完整备份-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast('已导出：' + filesWithData.length + ' 个文件打包在内');
 });
+
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
 $('#importFile').addEventListener('change', async e => {
   const f = e.target.files[0]; if(!f) return;
+  toast('正在解析备份…');
   try{
     const raw = JSON.parse(await f.text());
     const arr = Array.isArray(raw) ? raw : (raw.items || []);
@@ -1284,40 +1466,77 @@ $('#importFile').addEventListener('change', async e => {
     let n = 0;
     arr.forEach(x => {
       if(!x || typeof x !== 'object' || (!x.name && !x.url)) return;
-      items.unshift({ id: uid(), type: x.type || (x.secret ? 'api' : 'link'), name: x.name || '', url: x.url || '', secret: x.secret || '', cat: x.cat || '', icon: x.icon || '', tags: Array.isArray(x.tags) ? x.tags : parseTags(x.tags || ''), note: x.note || '', star: !!x.star, createdAt: x.createdAt || Date.now(), updatedAt: x.updatedAt || Date.now() });
+      items.unshift({
+        id: uid(), type: x.type || (x.secret ? 'api' : 'link'),
+        name: x.name || '', url: x.url || '', secret: x.secret || '',
+        cat: x.cat || '', icon: x.icon || '',
+        tags: Array.isArray(x.tags) ? x.tags : parseTags(x.tags || ''),
+        note: x.note || '', star: !!x.star,
+        createdAt: x.createdAt || Date.now(), updatedAt: x.updatedAt || Date.now()
+      });
       n++;
     });
+    let fileCount = 0;
+    const rawFiles = raw.files || raw.filesWithData || [];
+    if(Array.isArray(rawFiles) && rawFiles.length){
+      for(const rf of rawFiles){
+        if(!rf || !rf.dataBase64) continue;
+        try{
+          const blob = base64ToBlob(rf.dataBase64, rf.type);
+          await dbPutFile({
+            id: uid(),
+            kind: rf.kind || 'backup',
+            name: rf.name || '未命名',
+            size: rf.size || blob.size,
+            type: rf.type || '',
+            cat: rf.cat || '',
+            tags: Array.isArray(rf.tags) ? rf.tags : parseTags(rf.tags || ''),
+            note: rf.note || '',
+            data: blob,
+            createdAt: rf.createdAt || Date.now()
+          });
+          fileCount++;
+        }catch(err){ /* skip */ }
+      }
+      await loadFiles();
+    }
     if(!Array.isArray(raw)){
       if(raw.theme && THEMES[raw.theme]) applyTheme(raw.theme);
       if(typeof raw.customCss === 'string'){ $('#customCss').value = raw.customCss; applyCustomCss(raw.customCss); }
       if(raw.viewMode){ viewMode = raw.viewMode; localStorage.setItem(VIEW_KEY, viewMode); }
       if(raw.currentMode){ setMode(raw.currentMode); }
       if(typeof raw.customBg === 'string' && raw.customBg){ applyCustomBg(raw.customBg); }
+      if(raw.catPool && typeof raw.catPool === 'object'){
+        const cur = loadCatPool();
+        Object.keys(raw.catPool).forEach(k => {
+          if(!cur[k]) cur[k] = [];
+          (raw.catPool[k] || []).forEach(c => { if(!cur[k].includes(c)) cur[k].push(c); });
+        });
+        saveCatPool(cur);
+      }
     }
     save(); renderAll(); closeAll();
-    toast('导入 ' + n + ' 条');
+    toast('导入完成：' + n + ' 条数据 + ' + fileCount + ' 个文件');
   }catch(err){ toast('导入失败：' + err.message); }
   e.target.value = '';
 });
+
 $('#copyAllBtn').addEventListener('click', () => {
   if(currentMode === 'api'){
     const list = visibleItems(); if(!list.length){ toast('没有可复制的'); return; }
-    const txt = list.map(it => `【${it.name || '未命名'}】\nURL: ${it.url}${it.secret ? '\n密钥: ' + it.secret : ''}`).join('\n\n');
-    copyText(txt);
-  } else if(currentMode === 'file'){
-    const list = visibleFiles(); if(!list.length){ toast('没有可复制的'); return; }
-    const txt = list.map(f => `【${f.name}】${f.cat ? ' [' + f.cat + ']' : ''} ${formatSize(f.size)} · ${formatTime(f.createdAt)}${f.note ? '\n备注：' + f.note : ''}`).join('\n\n');
-    copyText(txt);
+    copyText(list.map(it => `【${it.name || '未命名'}】\nURL: ${it.url}${it.secret ? '\n密钥: ' + it.secret : ''}${it.note ? '\n备注：' + it.note : ''}`).join('\n\n'));
+  } else if(currentMode === 'file' || currentMode === 'material'){
+    const kind = currentMode === 'file' ? 'backup' : 'material';
+    const list = visibleFiles(kind); if(!list.length){ toast('没有可复制的'); return; }
+    copyText(list.map(f => `【${f.name}】${f.cat ? ' [' + f.cat + ']' : ''} ${(f.tags || []).map(t => '#' + t).join(' ')} ${formatSize(f.size)} · ${formatTime(f.createdAt)}${f.note ? '\n备注：' + f.note : ''}`).join('\n\n'));
   } else {
     const list = visibleItems(); if(!list.length){ toast('没有可复制的'); return; }
-    const txt = list.map(it => `【${it.name || '未命名'}】${it.cat ? ' [' + it.cat + ']' : ''}\n${it.url}${it.note ? '\n备注：' + it.note : ''}`).join('\n\n');
-    copyText(txt);
+    copyText(list.map(it => `【${it.name || '未命名'}】${it.cat ? ' [' + it.cat + ']' : ''}\n${it.url}${it.note ? '\n备注：' + it.note : ''}`).join('\n\n'));
   }
 });
 $('#clearBtn').addEventListener('click', async () => {
-  if(confirm('确定清空全部数据？包括所有链接、API 和上传的备份文件。建议先导出备份。')){
-    items = [];
-    save();
+  if(confirm('确定清空全部数据？包括所有链接、API、备份文件和素材。建议先导出备份。')){
+    items = []; save();
     const db = await openDB();
     const tx = db.transaction(DB_STORE, 'readwrite');
     tx.objectStore(DB_STORE).clear();
@@ -1327,7 +1546,6 @@ $('#clearBtn').addEventListener('click', async () => {
   }
 });
 
-/* ================= 启动 ================= */
 (async function init(){
   renderThemeList();
   applyTheme(localStorage.getItem(THEME_KEY) || 'glass');
